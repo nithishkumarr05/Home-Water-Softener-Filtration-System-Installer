@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Water Testing · AquaPure — Know What's in Your Water</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="description" content="Professional in-home water testing & analysis. Learn what's in your water — hardness, chlorine, pH, TDS, and contaminants. Schedule a free water test today.">
+
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'aqua': '#1B8A9E',
+                        'aqua-dark': '#0F6B7A',
+                        'aqua-light': '#A8DDE8',
+                        'aqua-glow': '#D4F0F7',
+                        'mist': '#F0F9FC',
+                        'canvas-light': '#F5FBFD',
+                        'canvas-dark': '#0F1A1F',
+                        'deep': '#0A2A33',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                        'mono': ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'marquee': 'marquee 22s linear infinite',
+                        'scale-up': 'scaleUp 0.5s ease-out',
+                        'slide-up': 'slideUp 0.7s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-15px)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+                        marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
+                        scaleUp: { '0%': { transform: 'scale(0.95)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scrollbar-width: none; -ms-overflow-style: none; overflow-x: hidden; }
+        body::-webkit-scrollbar { display: none; }
+
+        /* ===== LOGO ===== */
+        .logo-pill {
+            background: #FFFFFF;
+            border: 1px solid rgba(27, 138, 158, 0.25);
+            border-radius: 9999px;
+            padding: 0.5rem 1.25rem;
+            display: flex; align-items: center; gap: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .dark .logo-pill {
+            background: #0F1A1F;
+            border-color: rgba(27, 138, 158, 0.4);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .logo-pill:hover { border-color: #1B8A9E; }
+        .logo-icon-circle {
+            width: 1.75rem; height: 1.75rem;
+            border-radius: 9999px;
+            background: rgba(27, 138, 158, 0.15);
+            display: flex; align-items: center; justify-content: center;
+            color: #1B8A9E; font-size: 0.75rem; flex-shrink: 0;
+        }
+        .dark .logo-icon-circle { background: rgba(27, 138, 158, 0.25); color: #A8DDE8; }
+        .logo-text {
+            font-family: 'Inter', system-ui, sans-serif !important;
+            font-weight: 700; font-size: 1rem; color: #111827;
+            letter-spacing: -0.02em; white-space: nowrap;
+        }
+        .dark .logo-text { color: #FFFFFF; }
+        .logo-text .accent { color: #1B8A9E; }
+
+        /* navigation */
+        .nav-item { position: relative; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.02em; transition: color 0.3s; padding: 0.5rem 0; white-space: nowrap; }
+        .nav-item:hover, .nav-item.active { color: #1B8A9E; }
+        .nav-item.active { font-weight: 700; }
+        .nav-item::after { content: ''; position: absolute; bottom: 0; inset-inline-start: 0; width: 0; height: 2px; background: #1B8A9E; transition: width 0.3s; }
+        .nav-item:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; inset-inline-start: 0; min-width: 200px; background: #FFFFFF; border-radius: 16px; padding: 0.5rem 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s; z-index: 1000; border: 1px solid #1B8A9E30; box-shadow: 0 15px 35px rgba(0,0,0,0.08); text-align: start; }
+        .dropdown-menu.dropdown-right { inset-inline-start: auto; inset-inline-end: 0; }
+        .dark .dropdown-menu { background: #0F1A1F; border-color: #1B8A9E40; }
+        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: flex; align-items: center; padding: 0.6rem 1.2rem; gap: 10px; transition: all 0.2s; font-size: 0.85rem; }
+        .dropdown-item:hover { background: #1B8A9E10; color: #1B8A9E; padding-inline-start: 1.5rem; }
+        .dropdown-item.active { background: #1B8A9E08; color: #1B8A9E; font-weight: 700; border-inline-start: 3px solid #1B8A9E; padding-inline-start: 1.5rem; }
+        .dropdown-item i { width: 18px; color: #1B8A9E; }
+
+        .toggle-btn { width: 36px; height: 36px; border-radius: 40px; background: #E8F0F3; color: #1B8A9E; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+        .dark .toggle-btn { background: #1A2A30; color: #FFFFFF; }
+        .toggle-btn:hover, .toggle-btn.active { background: #1B8A9E; color: white; transform: rotate(10deg); }
+
+        /* cards */
+        .feature-card { background: #FFFFFF; border-radius: 24px; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); overflow: hidden; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.06); }
+        .dark .feature-card { background: #0F1A1F; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.6); }
+        .feature-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 30px 40px -12px #1B8A9E50; }
+
+        .btn-primary { background: #1B8A9E; color: white; padding: 0.8rem 2rem; border-radius: 60px; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+        .btn-primary:hover { background: #0F6B7A; transform: scale(1.03); }
+        .btn-outline { border: 2px solid #0F6B7A; background: transparent; color: #0F6B7A; padding: 0.75rem 2rem; border-radius: 60px; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+        .btn-outline:hover { background: #1B8A9E; color: white; border-color: #1B8A9E; }
+        .dark .btn-outline { border-color: #1B8A9E; color: #A8DDE8; }
+        .dark .btn-outline:hover { background: #1B8A9E; color: white; }
+
+        .social-icon { width: 40px; height: 40px; background: #1A2A30; display: inline-flex; align-items: center; justify-content: center; border-radius: 60px; transition: all 0.3s; color: #1B8A9E; }
+        .social-icon:hover { background: #1B8A9E; color: white; transform: translateY(-3px); }
+
+        .mobile-menu { background: #FFFFFF; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .dark .mobile-menu { background: #0F1A1F; }
+        .mobile-menu.open { max-height: 80vh; overflow-y: auto; }
+        .mobile-menu-item { display: block; padding: 1rem 1.5rem; border-bottom: 1px solid #E8E4DF; font-weight: 500; transition: all 0.3s; text-align: start; }
+        .dark .mobile-menu-item { border-bottom-color: #1A2A30; }
+        .mobile-menu-item.active { border-inline-start: 4px solid #1B8A9E; border-left: none; background: #1B8A9E08; color: #1B8A9E; font-weight: 700; }
+        .mobile-dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .mobile-dropdown-content.show { max-height: 400px; }
+
+        [dir="rtl"] .fa-arrow-right, [dir="rtl"] .fa-chevron-right { transform: scaleX(-1); }
+        [dir="rtl"] .fa-arrow-left, [dir="rtl"] .fa-chevron-left { transform: scaleX(-1); }
+
+        .footer-heading { position: relative; padding-bottom: 0.5rem; display: inline-block; }
+        @media (min-width: 768px) { .footer-heading { display: block; padding-bottom: 0; border-inline-start: 3px solid #1B8A9E; padding-inline-start: 0.75rem; } }
+        .footer-contact-item { display: flex; gap: 0.75rem; align-items: center; }
+        .footer-contact-item i { width: 20px; color: #1B8A9E; }
+
+        .shimmer-text { background: linear-gradient(120deg, #0F6B7A, #2AA8BE, #0A4A58, #1B8A9E); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 3s linear infinite; }
+        .dark .shimmer-text { background: linear-gradient(120deg, #2AA8BE, #A8DDE8, #2AA8BE, #1B8A9E); -webkit-background-clip: text; background-clip: text; }
+
+        /* divider label */
+        .divider-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            background: rgba(27,138,158,0.08);
+            border: 1px solid rgba(27,138,158,0.2);
+            color: #1B8A9E;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        @media (min-width: 640px) { .divider-label { font-size: 0.8rem; } }
+        .dark .divider-label { background: rgba(27,138,158,0.15); border-color: rgba(27,138,158,0.35); color: #A8DDE8; }
+
+        /* test item card */
+        .test-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 1.25rem;
+            background: #FFFFFF;
+            border: 1px solid rgba(27, 138, 158, 0.15);
+            transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) { .test-item { padding: 1.5rem; } }
+        .dark .test-item { background: #0F1A1F; border-color: rgba(27, 138, 158, 0.25); }
+        .test-item:hover {
+            border-color: #1B8A9E;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -15px rgba(27, 138, 158, 0.35);
+        }
+        .test-icon {
+            width: 3rem; height: 3rem;
+            border-radius: 1rem;
+            background: rgba(27, 138, 158, 0.1);
+            color: #1B8A9E;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) { .test-icon { width: 3.5rem; height: 3.5rem; font-size: 1.35rem; } }
+        .test-item:hover .test-icon { background: #1B8A9E; color: white; transform: scale(1.05); }
+
+        /* process step */
+        .process-step {
+            position: relative;
+            padding-left: 4rem;
+            padding-bottom: 2rem;
+        }
+        .process-step:last-child { padding-bottom: 0; }
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 1.35rem;
+            top: 3.25rem;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #1B8A9E, rgba(168,221,232,0.4));
+        }
+        .process-step:last-child::before { display: none; }
+        .process-step-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: #1B8A9E;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px -6px rgba(27, 138, 158, 0.5);
+        }
+        @media (max-width: 640px) {
+            .process-step { padding-left: 3.5rem; padding-bottom: 1.75rem; }
+            .process-step::before { left: 1.1rem; top: 2.85rem; }
+            .process-step-icon { width: 2.35rem; height: 2.35rem; font-size: 0.9rem; }
+        }
+
+        /* result row */
+        .result-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(27, 138, 158, 0.15);
+            background: #FFFFFF;
+            transition: all 0.3s ease;
+        }
+        .dark .result-row { background: #0F1A1F; border-color: rgba(27, 138, 158, 0.25); }
+        .result-row:hover { border-color: #1B8A9E; }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .status-ok { background: rgba(16,185,129,0.12); color: #059669; }
+        .status-warn { background: rgba(245,158,11,0.12); color: #D97706; }
+        .status-bad { background: rgba(239,68,68,0.12); color: #DC2626; }
+        .dark .status-ok { background: rgba(16,185,129,0.2); color: #6EE7B7; }
+        .dark .status-warn { background: rgba(245,158,11,0.2); color: #FCD34D; }
+        .dark .status-bad { background: rgba(239,68,68,0.2); color: #FCA5A5; }
+
+        /* soft pulse */
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(27, 138, 158, 0.4); }
+            50% { box-shadow: 0 0 0 14px rgba(27, 138, 158, 0); }
+        }
+        .soft-pulse { animation: softPulse 2.4s ease-in-out infinite; }
+
+        /* glass badge */
+        .glass-badge {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(27, 138, 158, 0.25);
+        }
+        .dark .glass-badge { background: rgba(15,26,31,0.9); border-color: rgba(27, 138, 158, 0.4); }
+
+        /* image overlay */
+        .img-overlay { position: relative; }
+        .img-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,42,51,0.65) 0%, rgba(10,42,51,0.1) 45%, transparent 70%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-canvas-light dark:bg-canvas-dark text-gray-900 dark:text-gray-100">
+
+<!-- ========== HEADER ========== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-canvas-dark/95 backdrop-blur-md border-b border-aqua/30">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20 relative">
+            <a href="index.html" class="flex items-center group shrink-0">
+                <div class="logo-pill group-hover:border-aqua">
+                    <div class="logo-icon-circle"><i class="fas fa-droplet"></i></div>
+                    <span class="logo-text">Aqua<span class="accent">Pure</span></span>
+                </div>
+            </a>
+
+            <!-- desktop nav -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="flex items-center gap-4 2xl:gap-6">
+                    <div class="dropdown">
+                        <button class="nav-item flex items-center gap-1">Home <i class="fas fa-chevron-down text-[10px]"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-item">About</a>
+                    <a href="services.html" class="nav-item">Services</a>
+                    <a href="products.html" class="nav-item">Products</a>
+                    <a href="our-products.html" class="nav-item">Our Products</a>
+                    <a href="water-testing.html" class="nav-item active">Water Testing</a>
+                    <a href="pricing.html" class="nav-item">Pricing</a>
+                    <a href="benefits.html" class="nav-item">Benefits</a>
+                    <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-3 shrink-0">
+                <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
+                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+            </div>
+            <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+        </div>
+
+        <!-- mobile menu -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex justify-between items-center w-full mobile-menu-item">Home <i class="fas fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-content" style="max-height:0;overflow:hidden;transition:max-height .3s;background:#F0F7FA;">
+                    <a href="index.html" class="block px-8 py-2 text-sm">Home 1</a>
+                    <a href="home2.html" class="block px-8 py-2 text-sm">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="services.html" class="mobile-menu-item">Services</a>
+            <a href="products.html" class="mobile-menu-item">Products</a>
+            <a href="our-products.html" class="mobile-menu-item">Our Products</a>
+            <a href="water-testing.html" class="mobile-menu-item active">Water Testing</a>
+            <a href="pricing.html" class="mobile-menu-item">Pricing</a>
+            <a href="benefits.html" class="mobile-menu-item">Benefits</a>
+            <a href="contact.html" class="mobile-menu-item">Contact</a>
+            <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
+                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <div class="flex items-center justify-center gap-3 pt-1">
+                    <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== 1. HERO — KNOW WHAT'S IN YOUR WATER ========== -->
+<section id="hero" class="relative min-h-[100svh] pt-20 sm:pt-24 pb-0 flex flex-col justify-between overflow-hidden bg-gradient-to-b from-[#F5FBFD] via-[#E8F4F8] to-[#D4EDF5] dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#071012]">
+    <div class="absolute inset-0 bg-gradient-to-br from-aqua/5 via-transparent to-aqua/10 pointer-events-none"></div>
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 flex-1 flex items-center py-6 sm:py-10">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            <div class="order-1 lg:order-1 text-center lg:text-start">
+                <div class="inline-block mb-3">
+                    <span class="px-4 py-1.5 bg-aqua/10 dark:bg-aqua/15 border border-aqua/30 dark:border-aqua/40 rounded-full text-[#0F6B7A] dark:text-[#A8DDE8] font-mono text-[10px] sm:text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2">
+                        <i class="fas fa-microscope"></i> FREE IN-HOME WATER TESTING
+                    </span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.12] tracking-tight">
+                    Know what's <span class="shimmer-text">in your water</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Professional on-site testing for hardness, chlorine, pH, TDS, and contaminants — so you know exactly what your home needs.
+                </p>
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-6">
+                    <a href="contact.html" class="btn-primary text-sm sm:text-base"><i class="fas fa-calendar-check"></i> Schedule a Water Test</a>
+                    <a href="#what-we-test" class="btn-outline text-sm sm:text-base"><i class="fas fa-list-check"></i> What We Test</a>
+                </div>
+                <div class="flex items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-7 pt-2">
+                    <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">8+</span><p class="text-[10px] sm:text-xs text-gray-500">Parameters tested</p></div>
+                    <div class="w-px h-8 bg-aqua/30"></div>
+                    <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">10m</span><p class="text-[10px] sm:text-xs text-gray-500">Results time</p></div>
+                    <div class="w-px h-8 bg-aqua/30"></div>
+                    <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">★</span><p class="text-[10px] sm:text-xs text-gray-500">100% free</p></div>
+                </div>
+            </div>
+
+            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px] h-[300px] sm:h-[380px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                    <img src="assets/images/wt.jpg"
+                         alt="Professional water testing lab analysis"
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-transparent"></div>
+                    <!-- floating badge -->
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
+                <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 2. WHY WATER TESTING MATTERS ========== -->
+<section id="why-testing" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/15">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <!-- Image column -->
+            <div class="relative order-2 lg:order-1">
+                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[440px] img-overlay">
+                    <img src="assets/images/wt1.jpg"
+                         alt="Glass of clean water — why water testing matters"
+                         class="w-full h-full object-cover">
+                </div>
+                <!-- floating stat -->
+                <div class="absolute -bottom-4 sm:-bottom-6 right-4 sm:right-6 bg-white dark:bg-[#0F1A1F] rounded-2xl shadow-2xl p-4 border border-aqua/20 flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-aqua/15 text-aqua flex items-center justify-center shrink-0">
+                        <i class="fas fa-triangle-exclamation text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-none">85%</p>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mt-1">US homes have hard water</p>
+                    </div>
+                </div>
+                <div class="absolute -top-4 -left-4 w-32 h-32 bg-aqua/30 rounded-full blur-3xl -z-10"></div>
+            </div>
+
+            <!-- Content column -->
+            <div class="order-1 lg:order-2">
+                <span class="divider-label"><i class="fas fa-circle-question"></i> Why It Matters</span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-4 leading-tight">
+                    Why water testing <span class="text-aqua">matters</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                    You can't fix what you can't see. Water problems — hardness, chlorine, sediment, and contaminants — are invisible until they start causing damage or health issues. Testing reveals the full picture.
+                </p>
+
+                <div class="mt-6 space-y-4">
+                    <!-- Reason 1 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm sm:text-base mb-1">Protect your family's health</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Identify contaminants like lead, bacteria, and heavy metals before they cause harm.</p>
+                        </div>
+                    </div>
+                    <!-- Reason 2 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-house-circle-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm sm:text-base mb-1">Protect your plumbing & appliances</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Hard water scale silently damages pipes, water heaters, dishwashers, and washing machines.</p>
+                        </div>
+                    </div>
+                    <!-- Reason 3 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm sm:text-base mb-1">Save money with the right system</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Test results tell us exactly what you need — so you never overpay for the wrong equipment.</p>
+                        </div>
+                    </div>
+                    <!-- Reason 4 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm sm:text-base mb-1">Enjoy better taste & clarity</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Discover the source of odd tastes, smells, or cloudiness — and how to fix it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="btn-primary mt-6 text-sm sm:text-base">
+                    <i class="fas fa-vial"></i> Schedule Your Free Test
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. WHAT WE TEST ========== -->
+<section id="what-we-test" class="py-16 sm:py-24 bg-gradient-to-b from-[#E8F4F8] to-[#D4EDF5] dark:from-[#0A1418] dark:to-[#071012] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
+            <span class="divider-label"><i class="fas fa-list-check"></i> What We Test</span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-4">
+                Parameters we <span class="text-aqua">analyze</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3">
+                Our comprehensive test covers 8+ key water quality indicators.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            <!-- Test 1 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-gem"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Water Hardness</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures calcium & magnesium levels that cause scale, dry skin, and dull laundry.</p>
+                </div>
+            </div>
+            <!-- Test 2 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-flask-vial"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Chlorine & Chloramine</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Detects disinfection chemicals that affect taste, odor, and skin comfort.</p>
+                </div>
+            </div>
+            <!-- Test 3 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-scale-balanced"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">pH Level</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Identifies acidic or alkaline water that can corrode plumbing or taste off.</p>
+                </div>
+            </div>
+            <!-- Test 4 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-droplet"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Total Dissolved Solids</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures overall mineral & particle content for water purity baseline.</p>
+                </div>
+            </div>
+            <!-- Test 5 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-biohazard"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Heavy Metals</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Screens for lead, copper, iron, and other metals that pose health risks.</p>
+                </div>
+            </div>
+            <!-- Test 6 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-bacteria"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Bacteria & Coliforms</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Detects harmful microorganisms — especially important for well water homes.</p>
+                </div>
+            </div>
+            <!-- Test 7 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-layer-group"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Sediment & Turbidity</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures cloudiness, sand, rust, and particles suspended in your water.</p>
+                </div>
+            </div>
+            <!-- Test 8 -->
+            <div class="test-item">
+                <div class="test-icon"><i class="fas fa-wind"></i></div>
+                <div>
+                    <h3 class="font-bold text-sm sm:text-base mb-1">Odor & Taste Compounds</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Identifies sulfur, musty, or chemical smells that make water unpleasant.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. OUR WATER TESTING PROCESS ========== -->
+<section id="process" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <!-- Process column -->
+            <div class="order-2 lg:order-1">
+                <span class="divider-label"><i class="fas fa-route"></i> Our Process</span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-4 leading-tight">
+                    How our <span class="text-aqua">testing works</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-3 mb-8 leading-relaxed">
+                    A simple 4-step process — from booking to results in under 24 hours.
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="process-step-icon">1</div>
+                        <h4 class="font-bold text-sm sm:text-base mb-1">Book Your Free Test</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Schedule online or by phone. We'll confirm a convenient time to visit your home.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="process-step-icon">2</div>
+                        <h4 class="font-bold text-sm sm:text-base mb-1">On-Site Sample Collection</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Our technician collects water samples from multiple taps using calibrated instruments.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="process-step-icon">3</div>
+                        <h4 class="font-bold text-sm sm:text-base mb-1">Lab-Grade Analysis</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Samples are tested for 8+ parameters using professional-grade testing equipment.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="process-step">
+                        <div class="process-step-icon">4</div>
+                        <h4 class="font-bold text-sm sm:text-base mb-1">Results & Recommendation</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">You get a clear report and a personalized recommendation — no pressure, no upselling.</p>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="btn-primary mt-6 text-sm sm:text-base">
+                    <i class="fas fa-calendar-check"></i> Schedule a Water Test
+                </a>
+            </div>
+
+            <!-- Image column -->
+            <div class="relative order-1 lg:order-2">
+                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[440px] img-overlay">
+                    <img src="assets/images/technician_testing.png"
+                         alt="Technician performing water test"
+                         class="w-full h-full object-cover">
+                </div>
+                <!-- overlay stats -->
+                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/95 dark:bg-[#0F1A1F]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-aqua/20">
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 text-center">
+                        <div>
+                            <p class="text-lg sm:text-2xl font-bold text-aqua leading-none">10m</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 mt-1.5">Results time</p>
+                        </div>
+                        <div class="border-x border-aqua/20">
+                            <p class="text-lg sm:text-2xl font-bold text-aqua leading-none">8+</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 mt-1.5">Parameters</p>
+                        </div>
+                        <div>
+                            <p class="text-lg sm:text-2xl font-bold text-aqua leading-none">100%</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 mt-1.5">Free service</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -top-4 -right-4 w-32 h-32 bg-aqua/30 rounded-full blur-3xl -z-10"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. UNDERSTAND YOUR WATER RESULTS ========== -->
+<section id="results" class="py-16 sm:py-24 bg-gradient-to-br from-[#E0F0F5]/80 via-[#F0F9FC] to-[#E0F0F5]/80 dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#0F1A1F] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
+            <span class="divider-label"><i class="fas fa-file-lines"></i> Understand Your Results</span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-4">
+                Your report, <span class="text-aqua">simplified</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3">
+                We translate technical measurements into clear, actionable insights. Here's a sample of what your report will look like.
+            </p>
+        </div>
+
+        <!-- Sample results panel -->
+        <div class="max-w-4xl mx-auto bg-white dark:bg-[#0F1A1F] rounded-2xl sm:rounded-3xl border border-aqua/20 shadow-xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-aqua to-aqua-dark px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-white">
+                        <i class="fas fa-file-waveform"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm sm:text-base">Water Quality Report</p>
+                        <p class="text-white/70 text-[10px] sm:text-xs font-mono">Sample · 88 Clearwater Lane</p>
+                    </div>
+                </div>
+                <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white text-xs font-mono font-bold">
+                    <i class="fas fa-circle text-[8px] text-emerald-300"></i> ANALYZED
+                </span>
+            </div>
+
+            <!-- Results rows -->
+            <div class="p-5 sm:p-8 space-y-3 sm:space-y-4">
+                <!-- Row 1 -->
+                <div class="result-row">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-gem text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm">Water Hardness</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">12.4 gpg — Very Hard</p>
+                        </div>
+                    </div>
+                    <span class="status-pill status-bad"><i class="fas fa-exclamation-triangle text-[9px]"></i> Action</span>
+                </div>
+                <!-- Row 2 -->
+                <div class="result-row">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-flask-vial text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm">Chlorine</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">1.8 ppm — Above ideal</p>
+                        </div>
+                    </div>
+                    <span class="status-pill status-warn"><i class="fas fa-circle-exclamation text-[9px]"></i> Warning</span>
+                </div>
+                <!-- Row 3 -->
+                <div class="result-row">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-scale-balanced text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm">pH Level</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">7.2 — Ideal range</p>
+                        </div>
+                    </div>
+                    <span class="status-pill status-ok"><i class="fas fa-check text-[9px]"></i> Good</span>
+                </div>
+                <!-- Row 4 -->
+                <div class="result-row">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-droplet text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm">Total Dissolved Solids</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">412 ppm — Slightly high</p>
+                        </div>
+                    </div>
+                    <span class="status-pill status-warn"><i class="fas fa-circle-exclamation text-[9px]"></i> Warning</span>
+                </div>
+                <!-- Row 5 -->
+                <div class="result-row">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-aqua/10 text-aqua flex items-center justify-center shrink-0">
+                            <i class="fas fa-bacteria text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm">Bacteria & Coliforms</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">Not detected</p>
+                        </div>
+                    </div>
+                    <span class="status-pill status-ok"><i class="fas fa-check text-[9px]"></i> Safe</span>
+                </div>
+            </div>
+
+            <!-- Footer note -->
+            <div class="px-5 sm:px-8 py-4 sm:py-5 bg-aqua/5 dark:bg-aqua/10 border-t border-aqua/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                    <i class="fas fa-info-circle text-aqua"></i>
+                    <span>Your report includes personalized system recommendations.</span>
+                </div>
+                <a href="contact.html" class="text-xs sm:text-sm font-bold text-aqua hover:underline inline-flex items-center gap-1.5 shrink-0">
+                    Get Your Report <i class="fas fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 max-w-4xl mx-auto">
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Safe / Ideal range
+            </div>
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Needs attention
+            </div>
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Immediate action
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. CTA — SCHEDULE A WATER TEST ========== -->
+<section class="py-16 sm:py-20 bg-white dark:bg-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="relative bg-gradient-to-r from-mist via-white to-mist dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#0F1A1F] border border-aqua/30 rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-14 max-w-4xl mx-auto shadow-xl overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-48 h-48 bg-aqua/15 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-aqua/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="relative z-10 text-center">
+                <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/92 dark:bg-[#0F1A1F]/92 border border-aqua/45 text-[#0F6B7A] dark:text-[#A8DDE8] shadow-sm text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase mb-4">
+                    <i class="fas fa-vial"></i> FREE · NO OBLIGATION
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white leading-tight">
+                    Schedule your <span class="text-aqua font-serif italic">water test</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-3 max-w-xl mx-auto leading-relaxed">
+                    Book a free in-home water test today. Our technician will analyze your water and walk you through the results — no pressure, no cost.
+                </p>
+
+                <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 mt-7">
+                    <a href="contact.html" class="btn-primary px-6 sm:px-7 py-3 text-sm shadow-md hover:shadow-lg w-full sm:w-auto">
+                        <i class="fas fa-calendar-check"></i> Schedule a Water Test
+                    </a>
+                    <a href="contact.html" class="btn-outline px-6 sm:px-7 py-3 text-sm w-full sm:w-auto">
+                        <i class="fas fa-phone-volume"></i> Call (323) 555-0271
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-6 pt-6 border-t border-aqua/20">
+                    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-clock text-aqua"></i> Mon–Sat: 8am – 7pm
+                    </div>
+                    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-bolt text-aqua"></i> Same-day appointments
+                    </div>
+                    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-file-lines text-aqua"></i> Full results report included
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer id="contact" class="pt-12 sm:pt-16 pb-8 bg-gray-900 dark:bg-[#050A0D]">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
+            <div class="text-center md:text-start">
+                <div class="flex items-center gap-3 mb-5 sm:mb-6 justify-center md:justify-start">
+                    <div class="logo-pill">
+                        <div class="logo-icon-circle"><i class="fas fa-droplet"></i></div>
+                        <span class="logo-text">Aqua<span class="accent">Pure</span></span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">Professional water softener & filtration system installation. Pure water, healthier home.</p>
+                <div class="flex gap-3 justify-center md:justify-start">
+                    <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="text-center md:text-start">
+                <h3 class="text-white text-lg sm:text-xl font-display font-bold mb-5 footer-heading">Services</h3>
+                <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                    <li><a href="water-testing.html" class="hover:text-aqua transition block">Water Testing</a></li>
+                    <li><a href="services.html" class="hover:text-aqua transition block">Softener Installation</a></li>
+                    <li><a href="services.html" class="hover:text-aqua transition block">Filtration Installation</a></li>
+                    <li><a href="services.html" class="hover:text-aqua transition block">Maintenance & Repair</a></li>
+                </ul>
+            </div>
+            <div class="text-center md:text-start">
+                <h3 class="text-white text-lg sm:text-xl font-display font-bold mb-5 footer-heading">Explore</h3>
+                <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                    <li><a href="index.html" class="hover:text-aqua transition block">Home</a></li>
+                    <li><a href="about.html" class="hover:text-aqua transition block">About</a></li>
+                    <li><a href="products.html" class="hover:text-aqua transition block">Products</a></li>
+                    <li><a href="pricing.html" class="hover:text-aqua transition block">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="text-center md:text-start">
+                <h3 class="text-white text-lg sm:text-xl font-display font-bold mb-5 footer-heading">Contact</h3>
+                <ul class="space-y-3 text-gray-400 text-sm sm:text-base">
+                    <li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-map-marker-alt"></i><span>88 Clearwater Lane, LA</span></li>
+                    <li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-phone"></i><span>+1 (323) 555-0271</span></li>
+                    <li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-envelope"></i><span>hello@aquapure.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-10 sm:mt-12 pt-6 sm:pt-8 text-center text-gray-500 text-[11px] sm:text-xs font-mono">
+            <p>© 2026 AquaPure — pure water, pure life. #DrinkBetter</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ========== SCRIPT ========== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Theme toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeBtnMob = document.getElementById('theme-toggle-mobile');
+        const updateThemeUI = (isDark) => {
+            [themeBtn, themeBtnMob].forEach(b => {
+                if (!b) return;
+                const moon = b.querySelector('.fa-moon');
+                const sun = b.querySelector('.fa-sun');
+                if (moon && sun) {
+                    if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                    else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                }
+            });
+        };
+        const toggleTheme = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeUI(isDark);
+        };
+        if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        if (themeBtnMob) themeBtnMob.addEventListener('click', toggleTheme);
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            updateThemeUI(true);
+        }
+
+        // RTL toggle
+        const rtlBtn = document.getElementById('rtl-toggle');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const updateRtlUI = (isRtl) => {
+            const dir = isRtl ? 'rtl' : 'ltr';
+            document.documentElement.dir = dir;
+            document.body.dir = dir;
+            [rtlBtn, rtlMob].forEach(b => b && b.classList.toggle('active', isRtl));
+        };
+        const toggleRtl = () => {
+            const isRtl = document.documentElement.dir !== 'rtl';
+            localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+            updateRtlUI(isRtl);
+        };
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRtl);
+        if (localStorage.getItem('dir') === 'rtl') updateRtlUI(true);
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = mobileToggle?.querySelector('i');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+                document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            });
+        }
+
+        // Mobile dropdowns
+        document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+                content.style.maxHeight = isOpen ? '0px' : '200px';
+                const chevron = btn.querySelector('.fa-chevron-down');
+                if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+
+        // Desktop dropdowns
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const btn = dropdown.querySelector('button');
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    document.querySelectorAll('.dropdown').forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
+                    dropdown.classList.toggle('open');
+                });
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+

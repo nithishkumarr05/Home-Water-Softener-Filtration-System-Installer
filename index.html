@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaPure · Home Water Softener & Filtration System Installer</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="description" content="Professional water softener & filtration system installation. Pure, soft water for your home. Book a service today.">
+
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'aqua': '#1B8A9E',
+                        'aqua-dark': '#0F6B7A',
+                        'aqua-light': '#A8DDE8',
+                        'aqua-glow': '#D4F0F7',
+                        'mist': '#F0F9FC',
+                        'canvas-light': '#F5FBFD',
+                        'canvas-dark': '#0F1A1F',
+                        'deep': '#0A2A33',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                        'mono': ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 20s linear infinite',
+                        'scale-up': 'scaleUp 0.5s ease-out',
+                        'ripple': 'ripple 2s ease-out infinite',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-15px)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+                        marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
+                        scaleUp: { '0%': { transform: 'scale(0.95)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        ripple: { '0%': { transform: 'scale(1)', opacity: '0.4' }, '100%': { transform: 'scale(2.5)', opacity: '0' } }
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scrollbar-width: none; -ms-overflow-style: none; }
+        body::-webkit-scrollbar { display: none; }
+
+        /* ===== LOGO — identical in header and footer ===== */
+        .logo-pill {
+            background: #FFFFFF;
+            border: 1px solid rgba(27, 138, 158, 0.25);
+            border-radius: 9999px;
+            padding: 0.5rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .dark .logo-pill {
+            background: #0F1A1F;
+            border-color: rgba(27, 138, 158, 0.4);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .logo-pill:hover { border-color: #1B8A9E; }
+        .logo-icon-circle {
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 9999px;
+            background: rgba(27, 138, 158, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1B8A9E;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .dark .logo-icon-circle { background: rgba(27, 138, 158, 0.25); color: #A8DDE8; }
+        .logo-text {
+            font-family: 'Inter', system-ui, sans-serif !important;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+        .dark .logo-text { color: #FFFFFF; }
+        .logo-text .accent { color: #1B8A9E; }
+
+        /* navigation */
+        .nav-item { position: relative; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.02em; transition: color 0.3s; padding: 0.5rem 0; white-space: nowrap; }
+        .nav-item:hover, .nav-item.active { color: #1B8A9E; }
+        .nav-item.active { font-weight: 700; }
+        .nav-item::after { content: ''; position: absolute; bottom: 0; inset-inline-start: 0; width: 0; height: 2px; background: #1B8A9E; transition: width 0.3s; }
+        .nav-item:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; inset-inline-start: 0; min-width: 200px; background: #FFFFFF; border-radius: 16px; padding: 0.5rem 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s; z-index: 1000; border: 1px solid #1B8A9E30; box-shadow: 0 15px 35px rgba(0,0,0,0.08); text-align: start; }
+        .dropdown-menu.dropdown-right { inset-inline-start: auto; inset-inline-end: 0; }
+        .dark .dropdown-menu { background: #0F1A1F; border-color: #1B8A9E40; }
+        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: flex; align-items: center; padding: 0.6rem 1.2rem; gap: 10px; transition: all 0.2s; font-size: 0.85rem; }
+        .dropdown-item:hover { background: #1B8A9E10; color: #1B8A9E; padding-inline-start: 1.5rem; }
+        .dropdown-item.active { background: #1B8A9E08; color: #1B8A9E; font-weight: 700; border-inline-start: 3px solid #1B8A9E; padding-inline-start: 1.5rem; }
+        .dropdown-item i { width: 18px; color: #1B8A9E; }
+
+        .toggle-btn { width: 36px; height: 36px; border-radius: 40px; background: #E8F0F3; color: #1B8A9E; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+        .dark .toggle-btn { background: #1A2A30; color: #FFFFFF; }
+        .toggle-btn:hover, .toggle-btn.active { background: #1B8A9E; color: white; transform: rotate(10deg); }
+
+        /* feature cards */
+        .feature-card { background: #FFFFFF; border-radius: 28px; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); overflow: hidden; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.06); }
+        .dark .feature-card { background: #0F1A1F; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.6); }
+        .feature-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 30px 40px -12px #1B8A9E50; }
+
+        .btn-primary { background: #1B8A9E; color: white; padding: 0.8rem 2rem; border-radius: 60px; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { background: #0F6B7A; transform: scale(1.03); }
+        .btn-outline { border: 2px solid #0F6B7A; background: transparent; color: #0F6B7A; padding: 0.75rem 2rem; border-radius: 60px; font-weight: 600; transition: all 0.3s; }
+        .btn-outline:hover { background: #1B8A9E; color: white; border-color: #1B8A9E; }
+        .dark .btn-outline { border-color: #1B8A9E; color: #A8DDE8; }
+        .dark .btn-outline:hover { background: #1B8A9E; color: white; }
+
+        .social-icon { width: 40px; height: 40px; background: #1A2A30; display: inline-flex; align-items: center; justify-content: center; border-radius: 60px; transition: all 0.3s; color: #1B8A9E; }
+        .social-icon:hover { background: #1B8A9E; color: white; transform: translateY(-3px); }
+
+        .mobile-menu { background: #FFFFFF; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .dark .mobile-menu { background: #0F1A1F; }
+        .mobile-menu.open { max-height: 80vh; overflow-y: auto; }
+        .mobile-menu-item { display: block; padding: 1rem 1.5rem; border-bottom: 1px solid #E8E4DF; font-weight: 500; transition: all 0.3s; text-align: start; }
+        .dark .mobile-menu-item { border-bottom-color: #1A2A30; }
+        .mobile-menu-item.active { border-inline-start: 4px solid #1B8A9E; border-left: none; background: #1B8A9E08; color: #1B8A9E; font-weight: 700; }
+        .mobile-dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .mobile-dropdown-content.show { max-height: 400px; }
+
+        [dir="rtl"] .fa-arrow-right, [dir="rtl"] .fa-chevron-right { transform: scaleX(-1); }
+        [dir="rtl"] .fa-arrow-left, [dir="rtl"] .fa-chevron-left { transform: scaleX(-1); }
+
+        .footer-heading { position: relative; padding-bottom: 0.5rem; display: inline-block; }
+        @media (min-width: 768px) { .footer-heading { display: block; padding-bottom: 0; border-inline-start: 3px solid #1B8A9E; padding-inline-start: 0.75rem; } }
+        .footer-contact-item { display: flex; gap: 0.75rem; align-items: center; }
+        .footer-contact-item i { width: 20px; color: #1B8A9E; }
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; display: flex; }
+        .marquee-content { display: inline-flex; animation: marquee 22s linear infinite; gap: 3rem; }
+
+        .stats-card { background: rgba(27, 138, 158, 0.08); backdrop-filter: blur(8px); border-radius: 2rem; }
+        .dark .stats-card { background: rgba(27, 138, 158, 0.15); }
+        .shimmer-text { background: linear-gradient(120deg, #0F6B7A, #2AA8BE, #0A4A58, #1B8A9E); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 3s linear infinite; }
+        .dark .shimmer-text { background: linear-gradient(120deg, #2AA8BE, #A8DDE8, #2AA8BE, #1B8A9E); -webkit-background-clip: text; background-clip: text; }
+    </style>
+</head>
+<body class="bg-canvas-light dark:bg-canvas-dark text-gray-900 dark:text-gray-100">
+
+<!-- ========== HEADER ========== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-canvas-dark/95 backdrop-blur-md border-b border-aqua/30">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between h-20 relative">
+            <a href="index.html" class="flex items-center group shrink-0">
+                <div class="logo-pill group-hover:border-aqua">
+                    <div class="logo-icon-circle"><i class="fas fa-droplet"></i></div>
+                    <span class="logo-text">Aqua<span class="accent">Pure</span></span>
+                </div>
+            </a>
+
+            <!-- desktop nav -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="flex items-center gap-5 2xl:gap-7">
+                    <div class="dropdown">
+                        <button class="nav-item active flex items-center gap-1">Home <i class="fas fa-chevron-down text-[10px]"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item active">Home 1</a>
+                            <a href="home2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-item">About</a>
+                    <a href="services.html" class="nav-item">Services</a>
+                    <a href="products.html" class="nav-item">Products</a>
+                    <a href="our-products.html" class="nav-item">Our Products</a>
+                    <a href="water-testing.html" class="nav-item">Water Testing</a>
+                    <a href="pricing.html" class="nav-item">Pricing</a>
+                    <a href="benefits.html" class="nav-item">Benefits</a>
+                    <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-3 shrink-0">
+                <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
+                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+            </div>
+            <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+
+        <!-- mobile menu -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex justify-between items-center w-full mobile-menu-item active">Home <i class="fas fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-content">
+                    <a href="index.html" class="block px-8 py-2 text-sm active">Home 1</a>
+                    <a href="home2.html" class="block px-8 py-2 text-sm">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="services.html" class="mobile-menu-item">Services</a>
+            <a href="products.html" class="mobile-menu-item">Products</a>
+            <a href="our-products.html" class="mobile-menu-item">Our Products</a>
+            <a href="water-testing.html" class="mobile-menu-item">Water Testing</a>
+            <a href="pricing.html" class="mobile-menu-item">Pricing</a>
+            <a href="benefits.html" class="mobile-menu-item">Benefits</a>
+            <a href="contact.html" class="mobile-menu-item">Contact</a>
+            <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
+                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <div class="flex items-center justify-center gap-3 pt-1">
+                    <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== 1. HERO ========== -->
+<section id="home" class="relative min-h-screen pt-24 pb-0 flex flex-col justify-between overflow-hidden bg-gradient-to-b from-[#F5FBFD] via-[#E8F4F8] to-[#D4EDF5] dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#071012]">
+    <div class="absolute inset-0 bg-gradient-to-br from-aqua/5 via-transparent to-aqua/10 pointer-events-none"></div>
+    <div class="container mx-auto px-6 relative z-10 flex-1 flex items-center py-4 md:py-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            <div class="order-1 lg:order-1">
+                <div class="inline-block mb-3"><span class="px-4 py-1.5 bg-aqua/10 dark:bg-aqua/15 border border-aqua/30 dark:border-aqua/40 rounded-full text-[#0F6B7A] dark:text-[#A8DDE8] font-mono text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2"><i class="fas fa-certificate"></i> PURE WATER SOLUTIONS</span></div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight">Soft, pure <span class="shimmer-text">water</span> for your home</h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-lg leading-relaxed">Professional water softener & filtration system installation. Say goodbye to hard water, hello to healthier living.</p>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="contact.html" class="btn-primary"><i class="fas fa-tools"></i> Book a service</a>
+                    <a href="water-testing.html" class="btn-outline"><i class="fas fa-vial"></i> Free water test</a>
+                </div>
+                <div class="flex items-center gap-6 mt-6 pt-2">
+                    <div><span class="font-bold text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">500+</span><p class="text-xs text-gray-500">Homes serviced</p></div>
+                    <div class="w-px h-8 bg-aqua/30"></div>
+                    <div><span class="font-bold text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">10+</span><p class="text-xs text-gray-500">Years experience</p></div>
+                    <div class="w-px h-8 bg-aqua/30"></div>
+                    <div><span class="font-bold text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">★</span><p class="text-xs text-gray-500">4.9 rating</p></div>
+                </div>
+            </div>
+            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
+                <!-- HERO HD IMAGE — water filtration system installation -->
+                <div class="relative w-full max-w-[460px] lg:max-w-[480px] h-[380px] lg:h-[420px] rounded-[2.5rem] overflow-hidden shadow-2xl skew-y-1 hover:skew-y-0 transition-transform duration-700">
+                    <img src="assets/hero_water_softener.png" alt="Professional water filtration system installation in a modern home" class="w-full h-full object-cover rounded-[2.5rem]">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
+                <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- marquee -->
+    <div class="marquee-wrapper py-3.5 bg-aqua/90 dark:bg-aqua-dark overflow-hidden shadow-xl w-full mt-auto">
+        <div class="marquee-content animate-marquee flex shrink-0 gap-12 text-white font-display font-bold text-base md:text-lg uppercase tracking-widest py-1">
+            <span class="inline-flex items-center gap-2"><i class="fas fa-droplet"></i> SOFT WATER • NO MORE SCALE</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-vial"></i> FREE WATER TESTING</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-bolt"></i> SAME-DAY INSTALLATION</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-shield-halved"></i> 5-YEAR WARRANTY</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-droplet"></i> SOFT WATER • NO MORE SCALE</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-vial"></i> FREE WATER TESTING</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-bolt"></i> SAME-DAY INSTALLATION</span>
+            <span class="inline-flex items-center gap-2"><i class="fas fa-shield-halved"></i> 5-YEAR WARRANTY</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 2: OUR PRODUCTS ===== -->
+<section id="products" class="py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/15">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-14">
+            <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2"><i class="fas fa-star"></i> OUR PRODUCTS</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mt-4">Premium <span class="text-aqua">water systems</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+            <!-- Product 1 -->
+            <div class="feature-card rounded-3xl overflow-hidden border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#15232A] shadow-lg hover:shadow-2xl hover:border-aqua hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+                <div class="w-full aspect-square overflow-hidden relative bg-[#eaedf0] dark:bg-[#d5dadf]">
+                    <img src="assets/icon_aquasoft_pro.png" alt="AquaSoft Pro icon" class="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-6 md:px-8 py-6 md:py-7 flex-grow flex flex-col w-full max-w-full overflow-hidden">
+                    <div class="flex flex-col items-start gap-2 mb-2 w-full">
+                        <span class="bg-aqua/10 text-aqua text-xs font-bold px-2 py-1 rounded-lg">PRO</span>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-aqua transition leading-none">AquaSoft Pro</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 flex-grow">Whole-house water softener, 48,000 grain capacity</p>
+                    
+                    <div class="mt-6 flex items-end justify-between">
+                        <span class="text-3xl font-extrabold text-gray-900 dark:text-white">$1,299</span>
+                    </div>
+                    
+                    <button class="mt-5 w-full py-3.5 bg-aqua text-white rounded-xl font-bold shadow-lg shadow-aqua/20 hover:bg-teal-500 hover:shadow-aqua/40 hover:-translate-y-0.5 transition-all duration-300">
+                        View details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="feature-card rounded-3xl overflow-hidden border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#15232A] shadow-lg hover:shadow-2xl hover:border-aqua hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+                <div class="w-full aspect-square overflow-hidden relative bg-[#eaedf0] dark:bg-[#d5dadf]">
+                    <img src="assets/icon_pureflow_ro.png" alt="PureFlow RO icon" class="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-6 md:px-8 py-6 md:py-7 flex-grow flex flex-col w-full max-w-full overflow-hidden">
+                    <div class="flex flex-col items-start gap-2 mb-2 w-full">
+                        <span class="bg-aqua/10 text-aqua text-xs font-bold px-2 py-1 rounded-lg">ESSENTIAL</span>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-aqua transition leading-none">PureFlow RO</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 flex-grow">5-stage reverse osmosis drinking water system</p>
+                    
+                    <div class="mt-6 flex items-end justify-between">
+                        <span class="text-3xl font-extrabold text-gray-900 dark:text-white">$499</span>
+                    </div>
+                    
+                    <button class="mt-5 w-full py-3.5 bg-aqua text-white rounded-xl font-bold shadow-lg shadow-aqua/20 hover:bg-teal-500 hover:shadow-aqua/40 hover:-translate-y-0.5 transition-all duration-300">
+                        View details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="feature-card rounded-3xl overflow-hidden border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#15232A] shadow-lg hover:shadow-2xl hover:border-aqua hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+                <div class="w-full aspect-square overflow-hidden relative bg-[#eaedf0] dark:bg-[#d5dadf]">
+                    <img src="assets/icon_aquaguard_uv.png" alt="AquaGuard UV icon" class="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-6 md:px-8 py-6 md:py-7 flex-grow flex flex-col w-full max-w-full overflow-hidden">
+                    <div class="flex flex-col items-start gap-2 mb-2 w-full">
+                        <span class="bg-aqua/10 text-aqua text-xs font-bold px-2 py-1 rounded-lg">COMBO</span>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-aqua transition leading-none">AquaGuard UV</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 flex-grow">UV purification + carbon filtration combo</p>
+                    
+                    <div class="mt-6 flex items-end justify-between">
+                        <span class="text-3xl font-extrabold text-gray-900 dark:text-white">$799</span>
+                    </div>
+                    
+                    <button class="mt-5 w-full py-3.5 bg-aqua text-white rounded-xl font-bold shadow-lg shadow-aqua/20 hover:bg-teal-500 hover:shadow-aqua/40 hover:-translate-y-0.5 transition-all duration-300">
+                        View details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 4: BENEFITS ===== -->
+<section id="benefits" class="py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2"><i class="fas fa-droplet"></i> WHY SOFT WATER</span>
+            <h2 class="text-4xl font-display font-bold mt-4">Benefits of <span class="text-aqua">pure water</span></h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-20 h-20 bg-aqua text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-5 shadow-lg"><i class="fas fa-hand-sparkles"></i></div>
+                <h4 class="font-bold text-xl mb-3 h-14 flex items-center justify-center">Healthier skin & hair</h4>
+                <p class="text-gray-500 text-sm">No more dryness or irritation</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-aqua text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-5 shadow-lg"><i class="fas fa-shirt"></i></div>
+                <h4 class="font-bold text-xl mb-3 h-14 flex items-center justify-center">Softer laundry</h4>
+                <p class="text-gray-500 text-sm">Brighter colors, less detergent</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-aqua text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-5 shadow-lg"><i class="fas fa-piggy-bank"></i></div>
+                <h4 class="font-bold text-xl mb-3 h-14 flex items-center justify-center">Save money</h4>
+                <p class="text-gray-500 text-sm">Lower bills, longer appliance life</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-aqua text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-5 shadow-lg"><i class="fas fa-glass-water"></i></div>
+                <h4 class="font-bold text-xl mb-3 h-14 flex items-center justify-center">Cleaner taste</h4>
+                <p class="text-gray-500 text-sm">Pure, refreshing drinking water</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. CUSTOM SOLUTIONS ========== -->
+<section id="custom-orders" class="py-24 bg-gradient-to-r from-[#E0F0F5]/80 via-[#F0F9FC] to-[#E0F0F5]/80 dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#0F1A1F] border-t border-aqua/20">
+    <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="relative order-2 lg:order-1">
+                <!-- HD IMAGE — modern home water system -->
+                <div class="rounded-3xl overflow-hidden shadow-2xl h-[400px]">
+                    <img src="assets/custom_system.png" alt="Custom home water softener and filtration system installed" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-5 -left-5 w-32 h-32 bg-aqua/30 rounded-full blur-2xl"></div>
+            </div>
+            <div class="order-1 lg:order-2"><span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2 mb-4"><i class="fas fa-house"></i> CUSTOM SOLUTIONS</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mt-2">Tailored <span class="text-aqua">water systems</span></h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-5">Every home is different. We design a custom filtration & softening solution based on your water quality, family size, and budget.</p>
+                <button class="btn-primary"><i class="fas fa-pen-to-square"></i> Get a free consultation</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. TESTIMONIAL / COMMUNITY ========== -->
+<section id="community" class="py-24 relative overflow-hidden bg-white dark:bg-[#0A1418] border-t border-aqua/20">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-aqua/10 rounded-full blur-[120px] pointer-events-none -z-0"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-xs tracking-wider uppercase font-bold inline-flex items-center gap-1.5">
+                <i class="fas fa-heart text-aqua text-xs"></i> COMMUNITY STORIES
+            </span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mt-4">
+                Trusted by <span class="text-aqua font-serif italic">homeowners</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mt-3 text-base leading-relaxed">
+                From busy families to retirees — hear why our community chooses <span class="font-semibold text-gray-900 dark:text-white">AquaPure</span> for their water needs.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/90 dark:bg-[#0F1A1F]/90 backdrop-blur-md p-8 rounded-3xl border border-aqua/20 shadow-lg hover:shadow-2xl hover:border-aqua/50 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between relative group">
+                <div class="absolute top-6 right-6 text-aqua/15 text-5xl font-serif select-none">“</div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed italic mb-6">
+                        “Our water was so hard it ruined our pipes. After AquaPure installed the softener, everything changed — softer skin, cleaner dishes, and no more scale buildup!”
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <img src="assets/avatar_sarah.png" alt="Sarah Johnson" class="w-11 h-11 rounded-full object-cover shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Sarah Johnson</h4>
+                            <span class="text-xs text-aqua font-medium flex items-center gap-1"><i class="fas fa-circle-check text-[10px]"></i> Homeowner</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 inline-flex items-center gap-1.5 bg-aqua/10 text-aqua-dark dark:text-aqua-light px-3 py-1 rounded-full text-xs font-mono">
+                        <i class="fas fa-droplet"></i> Favourite: AquaSoft Pro
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-[#0F1A1F] p-8 rounded-3xl border-2 border-aqua shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between relative group">
+                <div class="absolute top-6 right-6 text-aqua/20 text-5xl font-serif select-none">“</div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed italic mb-6">
+                        “The installation team was professional and clean. They explained everything and even helped us choose the right RO system for our kitchen. Highly recommend!”
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <img src="assets/avatar_michael.png" alt="Michael Rivera" class="w-11 h-11 rounded-full object-cover shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Michael Rivera</h4>
+                            <span class="text-xs text-aqua font-medium flex items-center gap-1"><i class="fas fa-circle-check text-[10px]"></i> Homeowner</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 inline-flex items-center gap-1.5 bg-aqua/10 text-aqua-dark dark:text-aqua-light px-3 py-1 rounded-full text-xs font-mono">
+                        <i class="fas fa-trophy"></i> Favourite: PureFlow RO
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/90 dark:bg-[#0F1A1F]/90 backdrop-blur-md p-8 rounded-3xl border border-aqua/20 shadow-lg hover:shadow-2xl hover:border-aqua/50 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between relative group">
+                <div class="absolute top-6 right-6 text-aqua/15 text-5xl font-serif select-none">“</div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed italic mb-6">
+                        “We noticed the difference immediately — no more chlorine smell, and the water tastes amazing. Our whole family drinks more water now!”
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <img src="assets/avatar_emily.png" alt="Emily Chen" class="w-11 h-11 rounded-full object-cover shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Emily Chen</h4>
+                            <span class="text-xs text-aqua font-medium flex items-center gap-1"><i class="fas fa-circle-check text-[10px]"></i> Homeowner</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 inline-flex items-center gap-1.5 bg-aqua/10 text-aqua-dark dark:text-aqua-light px-3 py-1 rounded-full text-xs font-mono">
+                        <i class="fas fa-faucet-drip"></i> Favourite: AquaGuard UV
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. CTA CARD ========== -->
+<section class="py-20 bg-[#E0F0F5] dark:bg-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-6">
+        <div class="bg-gradient-to-r from-mist via-white to-mist dark:from-[#0F1A1F] dark:via-[#0A1418] dark:to-[#0F1A1F] border border-aqua/30 rounded-3xl p-10 md:p-14 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden group">
+            <div class="absolute -top-16 -right-16 w-48 h-48 bg-aqua/15 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-aqua/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/92 dark:bg-[#0F1A1F]/92 border border-aqua/45 text-[#0F6B7A] dark:text-[#A8DDE8] shadow-sm text-xs font-mono font-bold tracking-widest uppercase mb-4">
+                    <i class="fas fa-droplet"></i> PURE WATER AWAITS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">
+                    Ready to <span class="text-aqua font-serif italic">transform</span> your water?
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 mt-3 text-base max-w-xl mx-auto leading-relaxed">
+                    Book a free water test today and get a custom quote. Same-day installation available in most areas.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+                    <a href="contact.html" class="btn-primary px-7 py-3 text-sm shadow-md hover:shadow-lg">
+                        <i class="fas fa-calendar-check"></i> Book Service
+                    </a>
+                    <a href="contact.html" class="btn-outline px-7 py-3 text-sm">
+                        <i class="fas fa-map-location-dot"></i> Find Installer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer id="contact" class="pt-16 pb-8 bg-gray-900 dark:bg-[#050A0D]">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="text-center md:text-start">
+                <div class="flex items-center gap-3 mb-6 justify-center md:justify-start">
+                    <div class="logo-pill">
+                        <div class="logo-icon-circle"><i class="fas fa-droplet"></i></div>
+                        <span class="logo-text">Aqua<span class="accent">Pure</span></span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-[16px] leading-relaxed mb-6">Professional water softener & filtration system installation. Pure water, healthier home.</p>
+                <div class="flex gap-3 justify-center md:justify-start">
+                    <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="text-center md:text-start"><h3 class="text-white text-xl font-display font-bold mb-5 footer-heading">Explore</h3><ul class="space-y-2 text-gray-400"><li><a href="#" class="hover:text-aqua transition block">Water Softeners</a></li><li><a href="#" class="hover:text-aqua transition block">Filtration Systems</a></li><li><a href="#" class="hover:text-aqua transition block">Water Testing</a></li><li><a href="#" class="hover:text-aqua transition block">Accessories</a></li></ul></div>
+            <div class="text-center md:text-start"><h3 class="text-white text-xl font-display font-bold mb-5 footer-heading">Services</h3><ul class="space-y-2 text-gray-400"><li><a href="#" class="hover:text-aqua transition block">Installation</a></li><li><a href="#" class="hover:text-aqua transition block">Maintenance</a></li><li><a href="#" class="hover:text-aqua transition block">Repair</a></li><li><a href="#" class="hover:text-aqua transition block">Consultation</a></li></ul></div>
+            <div class="text-center md:text-start"><h3 class="text-white text-xl font-display font-bold mb-5 footer-heading">Contact</h3><ul class="space-y-3 text-gray-400"><li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-map-marker-alt"></i><span>88 Clearwater Lane, LA</span></li><li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-phone"></i><span>+1 (323) 555-0271</span></li><li class="footer-contact-item justify-center md:justify-start"><i class="fas fa-envelope"></i><span>hello@aquapure.com</span></li></ul></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs font-mono"><p>© 2026 AquaPure — pure water, pure life. #DrinkBetter</p></div>
+    </div>
+</footer>
+
+<!-- ========== SCRIPT ========== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeBtnMob = document.getElementById('theme-toggle-mobile');
+        const updateThemeUI = (isDark) => { [themeBtn, themeBtnMob].forEach(b => { if (b) { const moon = b.querySelector('.fa-moon'); const sun = b.querySelector('.fa-sun'); if (moon && sun) { if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); } else { moon.classList.remove('hidden'); sun.classList.add('hidden'); } } } }); };
+        const toggleTheme = () => { document.documentElement.classList.toggle('dark'); const isDark = document.documentElement.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light'); updateThemeUI(isDark); };
+        if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        if (themeBtnMob) themeBtnMob.addEventListener('click', toggleTheme);
+        if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark'); updateThemeUI(true); }
+        const rtlBtn = document.getElementById('rtl-toggle');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const updateRtlUI = (isRtl) => { const dir = isRtl ? 'rtl' : 'ltr'; document.documentElement.dir = dir; document.body.dir = dir; [rtlBtn, rtlMob].forEach(b => b && b.classList.toggle('active', isRtl)); };
+        const toggleRtl = () => { const isRtl = document.documentElement.dir !== 'rtl'; localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr'); updateRtlUI(isRtl); };
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRtl);
+        if (localStorage.getItem('dir') === 'rtl') updateRtlUI(true);
+
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = mobileToggle?.querySelector('i');
+        if (mobileToggle) { mobileToggle.addEventListener('click', () => { mobileMenu.classList.toggle('open'); icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : ''; }); }
+        document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => { btn.addEventListener('click', () => { const content = btn.nextElementSibling; content.classList.toggle('show'); const chevron = btn.querySelector('.fa-chevron-down'); if (chevron) chevron.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)'; }); });
+        document.querySelectorAll('.dropdown').forEach(dropdown => { const btn = dropdown.querySelector('button'); if (btn) { btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); document.querySelectorAll('.dropdown').forEach(d => { if (d !== dropdown) d.classList.remove('open'); }); dropdown.classList.toggle('open'); }); } });
+        document.addEventListener('click', (e) => { if (!e.target.closest('.dropdown')) { document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open')); } });
+    });
+</script>
+</body>
+</html>
+
