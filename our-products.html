@@ -315,7 +315,7 @@
             <div class="hidden xl:flex items-center gap-3 shrink-0">
                 <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                 <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
-                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+                <a href="login.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Login</a>
             </div>
             <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -338,7 +338,7 @@
             <a href="benefits.html" class="mobile-menu-item">Benefits</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
-                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <a href="login.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Login</a>
                 <div class="flex items-center justify-center gap-3 pt-1">
                     <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                     <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
@@ -378,15 +378,14 @@
                 </div>
             </div>
 
-            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px] h-[300px] sm:h-[380px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end w-full">
+                <div class="relative w-full max-w-[560px] lg:max-w-none h-[380px] sm:h-[460px] lg:h-[540px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl group">
                     <img src="assets/images/op.jpg"
                          alt="Full lineup of water treatment systems"
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-transparent"></div>
-                    <!-- floating badge -->
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-transparent"></div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-aqua/25 rounded-full blur-3xl -z-10"></div>
                 <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
                 <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
             </div>
@@ -400,7 +399,7 @@
         <div class="text-center mb-6 sm:mb-8">
             <span class="divider-label"><i class="fas fa-list-ul"></i> Browse by Category</span>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <a href="#softeners" class="cat-nav-btn">
                 <i class="fas fa-water"></i>
                 <span>Water Softener<br>Systems</span>
@@ -412,10 +411,6 @@
             <a href="#drinking" class="cat-nav-btn">
                 <i class="fas fa-glass-water"></i>
                 <span>Under-Sink &<br>Drinking Water</span>
-            </a>
-            <a href="#parts" class="cat-nav-btn">
-                <i class="fas fa-screwdriver-wrench"></i>
-                <span>Filters, Media<br>& Replacement</span>
             </a>
         </div>
     </div>
@@ -439,71 +434,86 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
             <!-- Product 1 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-aqua mb-3"><i class="fas fa-star text-[9px]"></i> Bestseller</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-water text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Pro 48K</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Whole-house softener · 48,000 grain capacity</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Removes hard water scale</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>High-efficiency, salt-saving</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Protects appliances & plumbing</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$1,299<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-aqua backdrop-blur-md shadow-md"><i class="fas fa-star text-[9px]"></i> Bestseller</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/water_softener_pro.jpg" alt="AquaSoft Pro 48K" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Pro 48K</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Whole-house softener · 48,000 grain capacity</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Removes hard water scale</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>High-efficiency, salt-saving</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Protects appliances & plumbing</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$1,299<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-green mb-3"><i class="fas fa-leaf text-[9px]"></i> Eco Compact</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-faucet text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Compact 32K</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Space-saving softener for smaller homes</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Compact footprint</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Ideal for 1–3 person homes</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Up to 30% less salt usage</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$899<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-green backdrop-blur-md shadow-md"><i class="fas fa-leaf text-[9px]"></i> Eco Compact</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/water_softener_compact.jpg" alt="AquaSoft Compact 32K" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Compact 32K</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Space-saving softener for smaller homes</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Compact footprint</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Ideal for 1–3 person homes</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Up to 30% less salt usage</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$899<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col sm:col-span-2 lg:col-span-1">
-                <span class="cat-tag tag-purple mb-3"><i class="fas fa-bolt text-[9px]"></i> Premium</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-tint text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Elite 64K</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">High-capacity softener for large households</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>64,000 grain capacity</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Smart regeneration control</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Best for 5+ person homes</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$1,799<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-purple backdrop-blur-md shadow-md"><i class="fas fa-bolt text-[9px]"></i> Premium</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/p.jpg" alt="AquaSoft Elite 64K" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">AquaSoft Elite 64K</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">High-capacity softener for large households</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>64,000 grain capacity</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Smart regeneration control</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Best for 5+ person homes</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$1,799<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -528,71 +538,86 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
             <!-- Product 1 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-aqua mb-3"><i class="fas fa-fire text-[9px]"></i> Top Rated</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-home text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">PureHome Whole-House</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">3-stage carbon + sediment filtration</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Removes chlorine & odors</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Protects every appliance</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Improves taste & clarity</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$1,499<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-aqua backdrop-blur-md shadow-md"><i class="fas fa-fire text-[9px]"></i> Top Rated</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/whole_house_filter.jpg" alt="PureHome Whole-House" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">PureHome Whole-House</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">3-stage carbon + sediment filtration</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Removes chlorine & odors</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Protects every appliance</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Improves taste & clarity</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$1,499<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-purple mb-3"><i class="fas fa-shield-halved text-[9px]"></i> UV + Carbon</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-shield-halved text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">AquaGuard UV Whole-House</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">UV purification + carbon filtration</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>UV sterilizes bacteria & viruses</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Carbon removes taste & odor</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Ideal for well water homes</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$1,899<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-purple backdrop-blur-md shadow-md"><i class="fas fa-shield-halved text-[9px]"></i> UV + Carbon</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/uv_water_filter.jpg" alt="AquaGuard UV Whole-House" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">AquaGuard UV Whole-House</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">UV purification + carbon filtration</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>UV sterilizes bacteria & viruses</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Carbon removes taste & odor</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Ideal for well water homes</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$1,899<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col sm:col-span-2 lg:col-span-1">
-                <span class="cat-tag tag-amber mb-3"><i class="fas fa-layer-group text-[9px]"></i> Multi-Stage</span>
-                <div class="w-16 h-16 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-4 group-hover:bg-aqua group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-shower text-3xl"></i>
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">PureGuard 5-Stage</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Sediment + carbon + KDF + UV + post-filter</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Maximum contaminant removal</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Long filter life (up to 12 mo)</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Best for city & well water</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$2,199<small>+ install</small></span>
+            <div class="feature-card rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col overflow-hidden group shadow-lg hover:shadow-2xl hover:border-aqua transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                <div class="w-full h-60 sm:h-64 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                    <div class="absolute top-3.5 left-3.5 z-10">
+                        <span class="cat-tag tag-amber backdrop-blur-md shadow-md"><i class="fas fa-layer-group text-[9px]"></i> Multi-Stage</span>
                     </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    <img src="assets/images/carbon_water_filter.jpg" alt="PureGuard 5-Stage" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <h3 class="text-lg sm:text-xl font-bold mb-1">PureGuard 5-Stage</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Sediment + carbon + KDF + UV + post-filter</p>
+                    </div>
+                    <div class="space-y-1.5 mb-4">
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Maximum contaminant removal</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Long filter life (up to 12 mo)</span></div>
+                        <div class="product-feature"><i class="fas fa-check"></i><span>Best for city & well water</span></div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="price-tag">$2,199<small>+ install</small></span>
+                        </div>
+                        <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Request Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -649,96 +674,7 @@
     </div>
 </section>
 
-<!-- ========== 6. CATEGORY 4 — FILTERS, MEDIA & REPLACEMENT PARTS ========== -->
-<section id="parts" class="py-14 sm:py-20 bg-gradient-to-b from-[#E8F4F8] to-[#D4EDF5] dark:from-[#0A1418] dark:to-[#071012] border-t border-aqua/20 scroll-mt-24">
-    <div class="container mx-auto px-4 sm:px-6">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
-            <div>
-                <span class="divider-label mb-3"><i class="fas fa-screwdriver-wrench"></i> Category 04</span>
-                <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-3">
-                    Filters, media & <span class="text-aqua">replacement parts</span>
-                </h2>
-                <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2 max-w-xl">
-                    Genuine OEM-grade cartridges, filter media, and accessories to keep your system running at its best.
-                </p>
-            </div>
-            <a href="contact.html" class="btn-outline text-sm shrink-0"><i class="fas fa-comments"></i> Get Advice</a>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
-            <!-- Product 1 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-purple mb-3"><i class="fas fa-box text-[9px]"></i> 2-Pack</span>
-                <div class="w-full h-48 rounded-xl overflow-hidden mb-4">
-                    <img src="assets/images/filter_replacement_kit.jpg" alt="Carbon Block Filters" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">Carbon Block Filter 2-Pack</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Replacement 10" filters for whole-house systems</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>100% coconut shell carbon</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Lasts up to 6 months</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>5-micron nominal filtration</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$49</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-aqua mb-3"><i class="fas fa-droplet text-[9px]"></i> High Capacity</span>
-                <div class="w-full h-48 rounded-xl overflow-hidden mb-4">
-                    <img src="assets/images/softener_resin_media.jpg" alt="Premium Softener Resin" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">Premium Softener Resin</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">1 cu. ft. high-efficiency cation exchange resin</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>8% cross-linked resin</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>High chlorine resistance</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>NSF/ANSI 44 certified</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$129</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="feature-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-                <span class="cat-tag tag-amber mb-3"><i class="fas fa-certificate text-[9px]"></i> OEM Part</span>
-                <div class="w-full h-48 rounded-xl overflow-hidden mb-4">
-                    <img src="assets/images/water_test_kit.jpg" alt="RO Membrane Replacement" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="mb-3">
-                    <h3 class="text-lg sm:text-xl font-bold mb-1">RO Membrane Replacement</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">50 GPD reverse osmosis membrane</p>
-                </div>
-                <div class="space-y-1.5 mb-4">
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Filters down to 0.0001 microns</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Removes lead, arsenic & more</span></div>
-                    <div class="product-feature"><i class="fas fa-check"></i><span>Lasts 2-3 years</span></div>
-                </div>
-                <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="price-tag">$65</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary text-xs w-full"><i class="fas fa-cart-shopping"></i> Order Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== 7. WHY BUY FROM US ========== -->
+<!-- ========== 6. WHY BUY FROM US ========== -->
 <section id="why-products" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/20">
     <div class="container mx-auto px-4 sm:px-6">
         <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
@@ -853,7 +789,6 @@
                     <li><a href="#softeners" class="hover:text-aqua transition block">Water Softener Systems</a></li>
                     <li><a href="#whole-house" class="hover:text-aqua transition block">Whole-House Filter Systems</a></li>
                     <li><a href="#drinking" class="hover:text-aqua transition block">Under-Sink & Drinking Water</a></li>
-                    <li><a href="#parts" class="hover:text-aqua transition block">Filters, Media & Parts</a></li>
                 </ul>
             </div>
             <div class="text-center md:text-start">

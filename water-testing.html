@@ -329,7 +329,7 @@
             <div class="hidden xl:flex items-center gap-3 shrink-0">
                 <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                 <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
-                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+                <a href="login.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Login</a>
             </div>
             <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -352,7 +352,7 @@
             <a href="benefits.html" class="mobile-menu-item">Benefits</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
-                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <a href="login.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Login</a>
                 <div class="flex items-center justify-center gap-3 pt-1">
                     <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                     <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
@@ -393,14 +393,18 @@
             </div>
 
             <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px] h-[300px] sm:h-[380px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div class="relative w-full max-w-[560px] lg:max-w-none h-[380px] sm:h-[460px] lg:h-[540px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl group">
                     <img src="assets/images/wt.jpg"
                          alt="Professional water testing lab analysis"
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-transparent"></div>
-                    <!-- floating badge -->
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
+                    <div class="absolute top-4 sm:top-6 right-4 sm:right-6">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md text-xs font-semibold text-aqua shadow-lg border border-aqua/30">
+                            <i class="fas fa-microscope"></i> Certified Testing
+                        </span>
+                    </div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
                 <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
                 <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
             </div>
@@ -414,10 +418,11 @@
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <!-- Image column -->
             <div class="relative order-2 lg:order-1">
-                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[440px] img-overlay">
+                <div class="rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl h-[380px] sm:h-[480px] lg:h-[540px] group relative">
                     <img src="assets/images/wt1.jpg"
                          alt="Glass of clean water — why water testing matters"
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
                 </div>
                 <!-- floating stat -->
                 <div class="absolute -bottom-4 sm:-bottom-6 right-4 sm:right-6 bg-white dark:bg-[#0F1A1F] rounded-2xl shadow-2xl p-4 border border-aqua/20 flex items-center gap-3">
@@ -494,86 +499,7 @@
 </section>
 
 <!-- ========== 3. WHAT WE TEST ========== -->
-<section id="what-we-test" class="py-16 sm:py-24 bg-gradient-to-b from-[#E8F4F8] to-[#D4EDF5] dark:from-[#0A1418] dark:to-[#071012] border-t border-aqua/20">
-    <div class="container mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
-            <span class="divider-label"><i class="fas fa-list-check"></i> What We Test</span>
-            <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-4">
-                Parameters we <span class="text-aqua">analyze</span>
-            </h2>
-            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3">
-                Our comprehensive test covers 8+ key water quality indicators.
-            </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-            <!-- Test 1 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-gem"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Water Hardness</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures calcium & magnesium levels that cause scale, dry skin, and dull laundry.</p>
-                </div>
-            </div>
-            <!-- Test 2 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-flask-vial"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Chlorine & Chloramine</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Detects disinfection chemicals that affect taste, odor, and skin comfort.</p>
-                </div>
-            </div>
-            <!-- Test 3 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-scale-balanced"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">pH Level</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Identifies acidic or alkaline water that can corrode plumbing or taste off.</p>
-                </div>
-            </div>
-            <!-- Test 4 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-droplet"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Total Dissolved Solids</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures overall mineral & particle content for water purity baseline.</p>
-                </div>
-            </div>
-            <!-- Test 5 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-biohazard"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Heavy Metals</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Screens for lead, copper, iron, and other metals that pose health risks.</p>
-                </div>
-            </div>
-            <!-- Test 6 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-bacteria"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Bacteria & Coliforms</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Detects harmful microorganisms — especially important for well water homes.</p>
-                </div>
-            </div>
-            <!-- Test 7 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-layer-group"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Sediment & Turbidity</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Measures cloudiness, sand, rust, and particles suspended in your water.</p>
-                </div>
-            </div>
-            <!-- Test 8 -->
-            <div class="test-item">
-                <div class="test-icon"><i class="fas fa-wind"></i></div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base mb-1">Odor & Taste Compounds</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Identifies sulfur, musty, or chemical smells that make water unpleasant.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ========== 4. OUR WATER TESTING PROCESS ========== -->
 <section id="process" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/20">
@@ -623,10 +549,11 @@
 
             <!-- Image column -->
             <div class="relative order-1 lg:order-2">
-                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[440px] img-overlay">
+                <div class="rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl h-[380px] sm:h-[480px] lg:h-[540px] group relative">
                     <img src="assets/images/technician_testing.png"
                          alt="Technician performing water test"
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
                 </div>
                 <!-- overlay stats -->
                 <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/95 dark:bg-[#0F1A1F]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-aqua/20">

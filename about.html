@@ -259,7 +259,7 @@
             <div class="hidden xl:flex items-center gap-3 shrink-0">
                 <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                 <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
-                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+                <a href="login.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Login</a>
             </div>
             <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -282,7 +282,7 @@
             <a href="benefits.html" class="mobile-menu-item">Benefits</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
-                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <a href="login.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Login</a>
                 <div class="flex items-center justify-center gap-3 pt-1">
                     <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                     <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
@@ -323,12 +323,18 @@
             </div>
 
             <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px] h-[300px] sm:h-[380px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div class="relative w-full max-w-[560px] lg:max-w-none h-[380px] sm:h-[460px] lg:h-[540px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl group">
                     <img src="assets/images/water_softener_compact.jpg"
                          alt="Certified water treatment technician at work"
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-transparent"></div>
-                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
+                    <div class="absolute top-4 sm:top-6 right-4 sm:right-6">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md text-xs font-semibold text-aqua shadow-lg border border-aqua/30">
+                            <i class="fas fa-award"></i> Certified Installers
+                        </span>
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
                 <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
                 <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
             </div>
@@ -340,26 +346,25 @@
 <section id="who-we-are" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/15">
     <div class="container mx-auto px-4 sm:px-6">
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <!-- Image collage -->
+            <!-- Full-size Image Showcase -->
             <div class="relative order-2 lg:order-1">
-                <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                    <div class="col-span-2 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl h-[200px] sm:h-[260px]">
-                        <img src="assets/images/whole_house_filter.jpg"
-                             alt="AquaPure water treatment facility"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl h-[140px] sm:h-[180px]">
-                        <img src="assets/images/uv_water_filter.jpg"
-                             alt="Filtration system installation"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl h-[140px] sm:h-[180px]">
-                        <img src="assets/images/reverse_osmosis_system.jpg"
-                             alt="Water quality testing"
-                             class="w-full h-full object-cover">
-                    </div>
+                <div class="rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl h-[380px] sm:h-[480px] lg:h-[540px] group relative">
+                    <img src="assets/images/whole_house_filter.jpg"
+                         alt="AquaPure water treatment installation"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
                 </div>
                 <!-- floating badge -->
+                <div class="absolute -bottom-4 sm:-bottom-6 right-4 sm:right-6 bg-white/95 dark:bg-[#0F1A1F]/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-aqua/20 flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-aqua/15 text-aqua flex items-center justify-center shrink-0">
+                        <i class="fas fa-shield-halved text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-none">10+ Years</p>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mt-1">Industry Experience</p>
+                    </div>
+                </div>
+                <div class="absolute -top-4 -left-4 w-32 h-32 bg-aqua/30 rounded-full blur-3xl -z-10"></div>
             </div>
 
             <!-- Content -->
@@ -404,7 +409,86 @@
     </div>
 </section>
 
-<!-- ========== 3. OUR MISSION & VALUES ========== -->
+<!-- ========== 3. WHY SOFT WATER ========== -->
+<section id="why-soft-water" class="py-16 sm:py-24 bg-gradient-to-b from-[#F0F9FC] via-white to-[#F0F9FC] dark:from-[#0A1418] dark:via-[#0F1A1F] dark:to-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
+            <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-[10px] sm:text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2">
+                <i class="fas fa-droplet"></i> WHY SOFT WATER
+            </span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-3 sm:mt-4">
+                The real difference <span class="text-aqua">soft water makes</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3">
+                Experience the immediate benefits of conditioned water across your skin, appliances, laundry, and daily wellness.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Healthier Skin & Hair -->
+            <div class="feature-card rounded-3xl overflow-hidden flex flex-col group border border-aqua/20 dark:border-aqua/30 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 bg-white dark:bg-[#0F1A1F]">
+                <div class="relative w-full h-52 sm:h-56 overflow-hidden">
+                    <img src="assets/images/b.jpg" alt="Healthier skin & hair" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+                    <span class="absolute top-3 left-3 px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md">
+                        Skin & Hair
+                    </span>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-aqua transition min-h-[3rem]">Healthier skin & hair</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">Rinses away cleanly without stripping natural oils, preventing dry itchy skin and restoring natural shine to hair.</p>
+                </div>
+            </div>
+
+            <!-- Protect Appliances -->
+            <div class="feature-card rounded-3xl overflow-hidden flex flex-col group border border-aqua/20 dark:border-aqua/30 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 bg-white dark:bg-[#0F1A1F]">
+                <div class="relative w-full h-52 sm:h-56 overflow-hidden">
+                    <img src="assets/images/b1.jpg" alt="Protect plumbing & appliances" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+                    <span class="absolute top-3 left-3 px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md">
+                        Plumbing & Appliances
+                    </span>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-aqua transition min-h-[3rem]">Protect appliances</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">Eliminates damaging mineral buildup in pipes, water heaters, and dishwashers, doubling their operational life.</p>
+                </div>
+            </div>
+
+            <!-- Softer Laundry -->
+            <div class="feature-card rounded-3xl overflow-hidden flex flex-col group border border-aqua/20 dark:border-aqua/30 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 bg-white dark:bg-[#0F1A1F]">
+                <div class="relative w-full h-52 sm:h-56 overflow-hidden">
+                    <img src="assets/images/s1.jpg" alt="Softer laundry & spotless dishes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+                    <span class="absolute top-3 left-3 px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md">
+                        Laundry & Cleaning
+                    </span>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-aqua transition min-h-[3rem]">Softer laundry</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">Fabrics come out softer and brighter with up to 50% less detergent, while dishes dry sparkling without water spots.</p>
+                </div>
+            </div>
+
+            <!-- Cleaner Taste -->
+            <div class="feature-card rounded-3xl overflow-hidden flex flex-col group border border-aqua/20 dark:border-aqua/30 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 bg-white dark:bg-[#0F1A1F]">
+                <div class="relative w-full h-52 sm:h-56 overflow-hidden">
+                    <img src="assets/glass_clean_water.png" alt="Pure taste & refreshing hydration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+                    <span class="absolute top-3 left-3 px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md">
+                        Pure Hydration
+                    </span>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-aqua transition min-h-[3rem]">Cleaner taste</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">Crisp, refreshing drinking water straight from the tap, free of chemical odors and harsh mineral hardness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. OUR MISSION & VALUES ========== -->
 <section id="mission" class="py-16 sm:py-24 bg-gradient-to-b from-[#E8F4F8] to-[#D4EDF5] dark:from-[#0A1418] dark:to-[#071012] border-t border-aqua/20">
     <div class="container mx-auto px-4 sm:px-6">
         <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
@@ -539,10 +623,11 @@
 
             <!-- Image with stats -->
             <div class="relative order-2">
-                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[420px] img-overlay">
+                <div class="rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl h-[380px] sm:h-[480px] lg:h-[540px] group relative">
                     <img src="assets/images/carbon_water_filter.jpg"
                          alt="Professional water filtration system installation"
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/20 to-transparent"></div>
                 </div>
                 <!-- Stats overlay card -->
                 <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/95 dark:bg-[#0F1A1F]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-aqua/20">

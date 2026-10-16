@@ -248,6 +248,59 @@
             border-radius: inherit;
             pointer-events: none;
         }
+
+        /* category tab */
+        .cat-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #FFFFFF;
+            border: 1px solid rgba(27, 138, 158, 0.2);
+            color: #4b5563;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        @media (min-width: 640px) { .cat-tab { font-size: 0.85rem; padding: 0.55rem 1.25rem; } }
+        .cat-tab:hover { border-color: #1B8A9E; color: #1B8A9E; }
+        .cat-tab.active {
+            background: #1B8A9E;
+            color: white;
+            border-color: #1B8A9E;
+            box-shadow: 0 8px 20px -8px rgba(27, 138, 158, 0.6);
+        }
+        .dark .cat-tab { background: #0F1A1F; color: #d1d5db; border-color: rgba(27, 138, 158, 0.3); }
+        .dark .cat-tab.active { background: #1B8A9E; color: white; border-color: #1B8A9E; }
+
+        /* Service Cards Grid Alignment */
+        .service-item .service-title {
+            min-height: 3.5rem;
+        }
+        @media (min-width: 640px) {
+            .service-item .service-title {
+                min-height: 4rem;
+            }
+        }
+        .service-item .service-desc {
+            min-height: 4.5rem;
+        }
+        @media (min-width: 640px) {
+            .service-item .service-desc {
+                min-height: 5.25rem;
+            }
+        }
+        .service-item .service-checklist {
+            min-height: 5.5rem;
+        }
+        @media (min-width: 640px) {
+            .service-item .service-checklist {
+                min-height: 6rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-canvas-light dark:bg-canvas-dark text-gray-900 dark:text-gray-100">
@@ -287,7 +340,7 @@
             <div class="hidden xl:flex items-center gap-3 shrink-0">
                 <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                 <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
-                <a href="contact.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Book Service</a>
+                <a href="login.html" class="px-5 py-2.5 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block whitespace-nowrap">Login</a>
             </div>
             <button id="mobile-toggle" class="xl:hidden text-gray-800 dark:text-white p-2 text-2xl" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -310,7 +363,7 @@
             <a href="benefits.html" class="mobile-menu-item">Benefits</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="p-4 px-6 border-t border-aqua/20 space-y-3">
-                <a href="contact.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Book Service</a>
+                <a href="login.html" class="w-full text-center py-2.5 px-4 rounded-full bg-aqua hover:bg-[#0F6B7A] text-white text-sm font-semibold shadow-md transition-all block">Login</a>
                 <div class="flex items-center justify-center gap-3 pt-1">
                     <button id="theme-toggle-mobile" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
                     <button id="rtl-toggle-mobile" class="toggle-btn" title="Toggle RTL"><i class="fas fa-arrows-left-right"></i></button>
@@ -342,7 +395,7 @@
                     <a href="#services-list" class="btn-outline text-sm sm:text-base"><i class="fas fa-arrow-down"></i> View All Services</a>
                 </div>
                 <div class="flex items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-7 pt-2">
-                    <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">4</span><p class="text-[10px] sm:text-xs text-gray-500">Core services</p></div>
+                    <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">9+</span><p class="text-[10px] sm:text-xs text-gray-500">Complete services</p></div>
                     <div class="w-px h-8 bg-aqua/30"></div>
                     <div><span class="font-bold text-lg sm:text-xl md:text-2xl text-[#0F6B7A] dark:text-aqua">500+</span><p class="text-[10px] sm:text-xs text-gray-500">Installs</p></div>
                     <div class="w-px h-8 bg-aqua/30"></div>
@@ -350,15 +403,14 @@
                 </div>
             </div>
 
-            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px] h-[300px] sm:h-[380px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div class="relative order-2 lg:order-2 flex justify-center lg:justify-end w-full">
+                <div class="relative w-full max-w-[560px] lg:max-w-none h-[380px] sm:h-[460px] lg:h-[540px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl group">
                     <img src="assets/images/s2.jpg"
                          alt="Professional water treatment service technician at work"
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-transparent"></div>
-                    <!-- floating badge -->
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-transparent"></div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-aqua/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-aqua/25 rounded-full blur-3xl -z-10"></div>
                 <div class="absolute top-8 right-8 w-3 h-3 bg-aqua/60 rounded-full animate-ping"></div>
                 <div class="absolute bottom-16 left-12 w-2 h-2 bg-aqua/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
             </div>
@@ -366,131 +418,437 @@
     </div>
 </section>
 
-<!-- ========== 2. SERVICES LIST ========== -->
-<section id="services-list" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/15">
+<!-- ========== 2. COMPREHENSIVE SERVICES LIST ========== -->
+<section id="services-list" class="py-16 sm:py-24 bg-white dark:bg-[#0A1418] border-t border-aqua/15 scroll-mt-24">
     <div class="container mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
+        <div class="text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
             <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-[10px] sm:text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2">
-                <i class="fas fa-list-check"></i> OUR CORE SERVICES
+                <i class="fas fa-list-check"></i> COMPLETE SERVICE DIRECTORY
             </span>
             <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-3 sm:mt-4">
-                What we <span class="text-aqua">do best</span>
+                Specialized water solutions, <span class="text-aqua">end-to-end</span>
             </h2>
-            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3">
-                Four specialized services — delivered by certified technicians with guaranteed results.
+            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3 leading-relaxed">
+                Whether you need certified water testing, whole-house softening, reverse osmosis purification, UV disinfection, or ongoing system maintenance — our certified technicians deliver guaranteed results.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-            <!-- Service 1: Water Softener Installation -->
-            <div class="feature-card service-card p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-         
-                <div class="service-img">
-                    <img src="assets/images/s.jpg"
-                         alt="Water softener installation">
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-3">
-                    <i class="fas fa-water text-lg"></i>
-                </div>
-                <h3 class="text-lg sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white min-h-[3.5rem] sm:min-h-[4.5rem]">Water Softener Installation</h3>
-                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                    Say goodbye to hard water. We install high-efficiency whole-house softeners that eliminate scale, protect appliances, and make every drop feel silky-smooth.
-                </p>
-                <div class="space-y-2 mb-5">
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Whole-house & point-of-use options</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>High-efficiency, salt-saving systems</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Appliance & plumbing protection</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Softer skin, brighter laundry</span></div>
-                </div>
-                <div class="mt-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <a href="contact.html" class="btn-primary text-xs sm:text-sm w-full sm:w-auto"><i class="fas fa-calendar-check"></i> Book Installation</a>
-                    <a href="softeners.html" class="text-xs sm:text-sm font-semibold text-aqua hover:underline inline-flex items-center justify-center gap-1">
-                        Learn more <i class="fas fa-arrow-right text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Filter tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-14">
+            <button class="cat-tab active" data-filter="all"><i class="fas fa-th-large"></i> All Services (9)</button>
+            <button class="cat-tab" data-filter="filtration"><i class="fas fa-filter"></i> Water Filtration</button>
+            <button class="cat-tab" data-filter="testing"><i class="fas fa-vial"></i> Water Testing</button>
+            <button class="cat-tab" data-filter="softeners"><i class="fas fa-water"></i> Softeners & Setup</button>
+            <button class="cat-tab" data-filter="maintenance"><i class="fas fa-tools"></i> Maintenance & Repairs</button>
+        </div>
 
-            <!-- Service 2: Water Filtration Installation -->
-            <div class="feature-card service-card p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
+        <!-- Services Grid (9 Comprehensive Services) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- Service 01: Water Softener Installation -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="softeners">
+                <img src="assets/images/s.jpg" alt="Water Softener Installation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
                 
-                <div class="service-img">
-                    <img src="assets/images/s1.jpg"
-                         alt="Water filtration system installation">
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-3">
-                    <i class="fas fa-filter text-lg"></i>
-                </div>
-                <h3 class="text-lg sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white min-h-[3.5rem] sm:min-h-[4.5rem]">Water Filtration Installation</h3>
-                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                    Complete filtration solutions for every need — whole-house, under-sink, carbon, and sediment. Clean, great-tasting water from every tap in your home.
-                </p>
-                <div class="space-y-2 mb-5">
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Whole-house & under-sink systems</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Carbon & sediment filtration</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Removes chlorine, odors, contaminants</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Better taste & safer drinking water</span></div>
-                </div>
-                <div class="mt-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <a href="contact.html" class="btn-primary text-xs sm:text-sm w-full sm:w-auto"><i class="fas fa-calendar-check"></i> Book Installation</a>
-                    <a href="filtration.html" class="text-xs sm:text-sm font-semibold text-aqua hover:underline inline-flex items-center justify-center gap-1">
-                        Learn more <i class="fas fa-arrow-right text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Service 3: Water Testing & Analysis -->
-            <div class="feature-card service-card p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
-            
-                <div class="service-img">
-                    <img src="assets/s3.jpg"
-                         alt="Water testing and analysis">
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-3">
-                    <i class="fas fa-vial text-lg"></i>
-                </div>
-                <h3 class="text-lg sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white min-h-[3.5rem] sm:min-h-[4.5rem]">Water Testing & Analysis</h3>
-                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                    Professional in-home water testing to identify hardness, chlorine, pH, TDS, and contaminants. We give you the full picture before recommending anything.
-                </p>
-                <div class="space-y-2 mb-5">
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Free in-home water assessment</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Hardness, pH, chlorine & TDS testing</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Full report with clear recommendations</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Post-installation verification</span></div>
-                </div>
-                <div class="mt-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <a href="contact.html" class="btn-primary text-xs sm:text-sm w-full sm:w-auto"><i class="fas fa-vial"></i> Free Water Test</a>
-                    <a href="water-testing.html" class="text-xs sm:text-sm font-semibold text-aqua hover:underline inline-flex items-center justify-center gap-1">
-                        Learn more <i class="fas fa-arrow-right text-[10px]"></i>
-                    </a>
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Softeners & Conditioning
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">01</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Water Softener Installation</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Whole-house ion-exchange softeners, compact dual-tank setups, and salt-free conditioners that eliminate limescale, protect plumbing, and deliver silky-smooth water throughout your home.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Custom grain capacity sizing (24K–64K)</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Digital smart meter & salt-saving regeneration</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Code-compliant bypass & drain plumbing</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Post-install hardness verification test</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Book Install</a>
+                        <a href="products.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Explore Softeners <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Service 4: System Maintenance & Replacement -->
-            <div class="feature-card service-card p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-aqua/20 dark:border-aqua/30 bg-white dark:bg-[#0F1A1F] flex flex-col">
+            <!-- Service 02: Whole-House Water Filtration -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="filtration">
+                <img src="assets/images/whole_house_filter.jpg" alt="Whole-House Water Filtration Installation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
                 
-                <div class="service-img">
-                    <img src="assets/images/s4.jpg"
-                         alt="System maintenance and replacement">
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Whole-House Filtration
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">02</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Whole-House Water Filtration</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Multi-stage point-of-entry systems that purify every tap, shower, and appliance. Targets chlorine, chloramines, VOCs, rust, and heavy metals before water ever touches your plumbing.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>3-stage catalytic carbon + dual-gradient sediment</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Up to 99% chlorine, odor & chemical reduction</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>High flow rates (up to 15 GPM) with zero drop</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Safeguards water heaters, dishwashers & fixtures</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Book Install</a>
+                        <a href="products.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Explore Filters <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-aqua/10 text-aqua flex items-center justify-center mb-3">
-                    <i class="fas fa-tools text-lg"></i>
+            </div>
+
+            <!-- Service 03: Reverse Osmosis (RO) Systems -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="filtration">
+                <img src="assets/images/reverse_osmosis_system.jpg" alt="Under-Sink Reverse Osmosis Systems" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Drinking Water Purification
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">03</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Reverse Osmosis (RO) Systems</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        High-precision semi-permeable membrane filtration operating down to 0.0001 microns. Delivers pure, bottled-quality drinking and cooking water straight from a dedicated designer faucet.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>5-stage & 6-stage under-sink configurations</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Removes up to 99% of TDS, lead, PFAS & nitrates</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Remineralization stage for optimal pH & crisp taste</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Includes matching lead-free designer tap</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Order System</a>
+                        <a href="products.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Explore RO <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="text-lg sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white min-h-[3.5rem] sm:min-h-[4.5rem]">System Maintenance & Replacement</h3>
-                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                    Keep your system performing at its best. We handle filter replacements, resin changes, system check-ups, and full system upgrades — on schedule.
-                </p>
-                <div class="space-y-2 mb-5">
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Filter & cartridge replacements</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Resin & membrane changes</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Annual system check-ups</span></div>
-                    <div class="service-feature"><i class="fas fa-check"></i><span>Full system upgrades & replacement</span></div>
+            </div>
+
+            <!-- Service 04: In-Home Water Testing & Lab Analysis -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="testing">
+                <img src="assets/s3.jpg" alt="In-Home Water Testing and Lab Analysis" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Testing & Diagnostics
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">04</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Water Testing & Lab Analysis</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Certified on-site testing for hardness (gpg), chlorine/chloramines, TDS, pH, and dissolved iron. Advanced certified laboratory testing available for bacteria, lead, and well water parameters.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Free on-site 8+ parameter diagnostic testing</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Certified laboratory analysis for well water & bacteria</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Detailed digital diagnostic report</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>100% objective advice with zero high-pressure sales</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-vial"></i> Free Test</a>
+                        <a href="water-testing.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Learn More <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="mt-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <a href="contact.html" class="btn-primary text-xs sm:text-sm w-full sm:w-auto"><i class="fas fa-calendar-check"></i> Book Maintenance</a>
-                    <a href="maintenance.html" class="text-xs sm:text-sm font-semibold text-aqua hover:underline inline-flex items-center justify-center gap-1">
-                        Learn more <i class="fas fa-arrow-right text-[10px]"></i>
-                    </a>
+            </div>
+
+            <!-- Service 05: UV Microbiological Disinfection -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="filtration">
+                <img src="assets/images/uv_water_filter.jpg" alt="UV Microbiological Disinfection Systems" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Disinfection & Well Safety
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">05</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">UV Microbiological Disinfection</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Chemical-free germicidal ultraviolet sterilization that destroys 99.99% of harmful biological contaminants, including coliform bacteria, E. coli, viruses, and cryptosporidium cysts.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>99.99% biological pathogen inactivation</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Chemical-free with zero odor or taste alteration</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Digital countdown controller & audible safety alarm</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Ideal protection for rural homes & private wells</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Request UV Setup</a>
+                        <a href="contact.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Consult Specialist <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 06: Filter Replacement & Routine Tune-Ups -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="maintenance">
+                <img src="assets/images/filter_replacement_kit.jpg" alt="Filter Replacement and Routine Tune-Ups" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Preventive Maintenance
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">06</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Filter Replacement & Tune-Up</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Keep your system performing at factory peak efficiency. We provide scheduled cartridge changes, sediment flushes, RO membrane sanitization, and system performance calibration.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Factory-certified OEM replacement cartridges</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Scheduled annual & semi-annual maintenance service</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Brine tank clean-out, sanitization & valve inspection</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Pressure and flow rate post-service verification</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Book Tune-Up</a>
+                        <a href="pricing.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            View Pricing <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 07: Resin Bed Replacement & Media Re-Bedding -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="maintenance">
+                <img src="assets/images/softener_resin_media.jpg" alt="Resin Bed Replacement and Media Re-Bedding" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Restoration & Media
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">07</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Resin Bed Replacement & Media</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Over years of use, softening resin beads degrade from chlorine exposure and friction. We extract exhausted media and repack premium cross-linked ion-exchange resin, restoring full capacity.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>High-capacity 10% cross-linked cation resin</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Catalytic carbon & KDF media re-bedding</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Complete tank sanitization & distributor tube inspection</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Restores performance at a fraction of new unit cost</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Request Re-Bed</a>
+                        <a href="contact.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Get Quote <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 08: Well Water Specialty Treatment -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="filtration">
+                <img src="assets/images/s1.jpg" alt="Well Water Specialty Treatment" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Specialty Well Solutions
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">08</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Well Water Iron, Sulfur & pH</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Targeted solutions engineered for complex private well water issues. Air-injection oxidation eliminates orange rust stains, black manganese, and foul rotten-egg hydrogen sulfide smells.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Chemical-free air-injection iron & sulfur removal</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Calcite acid neutralizers to correct corrosive low pH</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Automatic backwashing with zero harsh additives</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Prevents fixture staining & copper pipe pinhole leaks</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Book Well Check</a>
+                        <a href="contact.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Well Solutions <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 09: System Diagnostics, Repairs & Upgrades -->
+            <div class="service-item relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl border border-aqua/30 transition-all duration-500 min-h-[500px] sm:min-h-[540px] flex flex-col justify-end" data-category="maintenance">
+                <img src="assets/images/s4.jpg" alt="System Diagnostics, Repairs and Upgrades" class="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40"></div>
+                
+                <div class="relative z-10 p-6 sm:p-7 flex flex-col justify-end text-white flex-1">
+                    <div class="flex items-center justify-between mb-3 mt-auto">
+                        <span class="px-3 py-1 bg-aqua/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                            Diagnostics & Repairs
+                        </span>
+                        <span class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0">09</span>
+                    </div>
+                    <h3 class="service-title text-xl sm:text-2xl font-bold mb-2 text-white min-h-[3.5rem] sm:min-h-[4rem]">Diagnostics, Repairs & Upgrades</h3>
+                    <p class="service-desc text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 min-h-[4.5rem] sm:min-h-[5.25rem]">
+                        Rapid troubleshooting for malfunctioning control valves, continuous draining, salt bridges, low water pressure, or leaks. We service all major brands and offer smart WiFi flow retrofits.
+                    </p>
+                    <div class="service-checklist space-y-1.5 mb-5 text-xs text-gray-200 min-h-[5.5rem] sm:min-h-[6rem]">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Rapid diagnosis of salt bridges, leaks & valve jams</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Piston, motor, and seal pack rebuild services</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Smart WiFi meter & automatic shutoff retrofitting</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-aqua-light"></i><span>Transparent flat-rate repair pricing with warranty</span></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <a href="contact.html" class="btn-primary text-xs py-2 px-4"><i class="fas fa-calendar-check"></i> Book Repair</a>
+                        <a href="pricing.html" class="text-xs font-semibold text-aqua-light hover:text-white transition inline-flex items-center gap-1">
+                            Service Rates <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. SERVICE SELECTION & DIAGNOSTIC MATRIX ========== -->
+<section id="service-guide" class="py-16 sm:py-24 bg-gradient-to-b from-[#F0F9FC] via-white to-[#F0F9FC] dark:from-[#0A1418] dark:via-[#0F1A1F] dark:to-[#0A1418] border-t border-aqua/20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+            <span class="px-4 py-1.5 bg-aqua/10 border border-aqua/20 rounded-full text-aqua font-mono text-[10px] sm:text-xs tracking-wider uppercase font-bold inline-flex items-center gap-2">
+                <i class="fas fa-circle-question"></i> SELECTION GUIDE
+            </span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-bold mt-3 sm:mt-4">
+                Which service does <span class="text-aqua">your home need?</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-3 leading-relaxed">
+                Match your water symptoms or home requirements directly to our certified service recommendations below.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Issue 1 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Scaling & Soap Scum
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">White chalky spots, stiff clothes, dry skin</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">Hard calcium and magnesium minerals are damaging your plumbing fixtures and drying out your family's skin.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">Water Softener Installation</p>
+                    </div>
+                    <a href="contact.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Issue 2 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Chemical & Chlorine Odor
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tap water smells or tastes like pool bleach</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">Municipal disinfectant chlorine and chloramines dry out hair in showers and affect cooking and drinking flavors.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">Whole-House Carbon Filter</p>
+                    </div>
+                    <a href="contact.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Issue 3 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Contaminant Concerns
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Concerned about lead, PFAS, fluoride, TDS</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">You want 99% pure, medical-grade drinking water for your children, baby formula, coffee, and daily hydration.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">Under-Sink Reverse Osmosis</p>
+                    </div>
+                    <a href="contact.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Issue 4 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Rotten Egg Smell / Orange Rust
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Private well water odors or rusty staining</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">Hydrogen sulfide gas causes sulfur smells, while dissolved iron and manganese ruin sinks, tubs, and laundry.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">Well Water Specialty Treatment</p>
+                    </div>
+                    <a href="contact.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Issue 5 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Bacterial & Microbe Vulnerability
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Untreated well water or seasonal runoff</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">Risk of coliform bacteria, E. coli, parasites, and cysts contaminating drinking supplies without municipal chlorination.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">UV Microbiological System</p>
+                    </div>
+                    <a href="contact.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Issue 6 -->
+            <div class="bg-white dark:bg-[#0F1A1F] rounded-3xl p-6 sm:p-7 border border-aqua/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                        <i class="fas fa-triangle-exclamation"></i> Symptom: Unknown Water Chemistry
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Moved to a new home or haven't tested</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">Never guess which equipment you need. Certified diagnostics provide complete clarity on your exact water profile.</p>
+                </div>
+                <div class="pt-4 border-t border-aqua/15 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-mono uppercase text-gray-400">Recommended</p>
+                        <p class="font-bold text-sm text-aqua">Free In-Home Water Test</p>
+                    </div>
+                    <a href="water-testing.html" class="w-8 h-8 rounded-full bg-aqua/10 hover:bg-aqua text-aqua hover:text-white flex items-center justify-center transition"><i class="fas fa-arrow-right text-xs"></i></a>
                 </div>
             </div>
         </div>
@@ -548,11 +906,11 @@
             </div>
 
             <!-- Image column -->
-            <div class="relative order-1 lg:order-2">
-                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[320px] sm:h-[440px] img-overlay">
+            <div class="relative order-1 lg:order-2 group">
+                <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[400px] sm:h-[500px] lg:h-[580px] img-overlay">
                     <img src="assets/images/s5.jpg"
                          alt="Water treatment technician performing service"
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
                 <!-- stats overlay -->
                 <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/95 dark:bg-[#0F1A1F]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-aqua/20">
@@ -818,6 +1176,29 @@
                 }
             });
         });
+
+        // Category filter for services
+        const catTabs = document.querySelectorAll('.cat-tab');
+        const serviceItems = document.querySelectorAll('.service-item');
+        if (catTabs.length && serviceItems.length) {
+            catTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    catTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const filter = tab.getAttribute('data-filter');
+                    serviceItems.forEach(item => {
+                        const cat = item.getAttribute('data-category');
+                        if (filter === 'all' || cat === filter) {
+                            item.style.display = '';
+                            item.classList.remove('hidden');
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
     });
 </script>
 </body>
